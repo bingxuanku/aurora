@@ -1,0 +1,65 @@
+.au-tabs {
+  position: relative;
+}
+
+.au-tabs-heading {
+  display: flex;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid $color-border;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.au-tab-item {
+  height: 40px;
+  padding: 10px 30px;
+  font-size: $fontsize-default;
+  transition: all $transition-during;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  color: $color-silver;
+  position: relative;
+
+  &:hover {
+    color: $color-black-light-extra;
+  }
+
+  &.active {
+    color: $color-primary;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $color-gray-light;
+  }
+}
+
+.au-tabs-heading-active-line {
+  position: absolute;
+  top: 37px;
+  height: 3px;
+  background-color: $color-primary;
+  transition-property: left, width;
+  transition-duration: $transition-during;
+}
+
+.au-tabs-content {
+  padding: 10px 0;
+}
+
+.au-tab-badge {
+  background-color: $tabs-badge-back-color;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: $tabs-badge-width;
+  height: $tabs-badge-width;
+  line-height: $tabs-badge-width;
+  border-radius: $tabs-badge-width;
+  font-size: $tabs-badge-fontsize;
+  color: $color-white;
+  padding: 0 $tabs-badge-padding;
+  text-align: center;
+}

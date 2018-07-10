@@ -1,0 +1,160 @@
+extends ./_layout
+
+block title
+  |Checkbox
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuCheckbox
+      .docs-desc
+
+    .docs-section
+      h2|是否选择器
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-checkbox(label="是否同意", v-model="form.isConfirm")
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|基础Checkbox
+      .docs-desc
+        p|基础Checkbox的用法
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-checkbox(label="男", value="1", v-model="form.genders")
+          au-checkbox(label="女", value="2", v-model="form.genders")
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|禁用Checkbox
+      .docs-desc
+        p|禁用Checkbox的用法
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-checkbox(label="男", value="1", v-model="form.genders", disabled)
+          au-checkbox(label="女", value="2", v-model="form.genders", disabled)
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|Checkbox Group
+      .docs-desc
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-checkbox-group(:options="cityOptions", v-model="form.cities")
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|全选
+      .docs-desc
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-checkbox(label="全选", :indeterminate="indeterminate", v-model="checkAll")
+          au-checkbox-group(:options="cityOptions", v-model="form.cities")
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      computed: {
+        checkAll: {
+          get () {
+            return this.form.cities.length === this.cityOptions.length
+          },
+          set (value) {
+            if (value) {
+              this.form.cities = this.cityOptions.map((option) => {
+                return option.value
+              })
+            } else {
+              this.form.cities = []
+            }
+          }
+        },
+        indeterminate () {
+          const length = this.form.cities.length
+          return length > 0 && length < this.cityOptions.length
+        }
+      },
+      data () {
+        return {
+          attrs: [
+
+            {
+              name: 'v-model',
+              desc: '绑定的数据',
+              type: 'String, Number',
+              default: ''
+            },
+            {
+              name: 'value',
+              desc: '匹配的数据',
+              type: 'String, Number, Boolean',
+              default: ''
+            },
+            {
+              name: 'label',
+              desc: '显示的内容',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'indeterminate',
+              desc: 'indeterminate模式',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'disabled',
+              desc: '是否禁用',
+              type: 'Boolean',
+              default: 'false'
+            },
+          ],
+          form: {
+            all: false,
+            isConfirm: '',
+            cities: [],
+            genders: []
+          },
+          cityOptions: [
+            {
+              label: '北京',
+              value: '北京'
+            },
+            {
+              label: '天津',
+              value: '天津'
+            },
+            {
+              label: '上海',
+              value: '上海'
+            }
+          ]
+        }
+      }
+    })

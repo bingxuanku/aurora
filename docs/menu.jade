@@ -1,0 +1,83 @@
+extends ./_layout
+
+block title
+  |Menu
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuMenu
+      .docs-desc
+
+    .docs-section
+      h2|水平菜单
+      .docs-desc
+
+      template.html(scoped="scoped")
+        au-flex(column)
+          au-item(span="12")
+            .docs-panel-row
+              .docs-menu-wrapper
+                au-menu(:selected="selected")
+                  au-menu-item|首页
+                    au-menu
+                      au-menu-item(value="sub1", @click="toggle('sub1')")|子项目1
+                      au-menu-item(value="sub2", @click="toggle('sub2')")|子项目2
+                      au-menu-item(value="sub3", @click="toggle('sub3')")|子项目3
+                  au-menu-item(value="content", @click="toggle('content')")|内容
+                  au-menu-item(value="list", @click="toggle('list')")|列表
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|垂直菜单
+      .docs-desc
+
+      template.html(scoped="scoped")
+        au-flex(column)
+          au-item(span="12")
+            .docs-panel-row
+              .docs-menu-wrapper
+                au-menu(vertical, :selected="selected")
+                  au-menu-item|首页
+                    au-menu
+                      au-menu-item(value="sub1", @click="toggle('sub1')")|子项目1
+                      au-menu-item(value="sub2", @click="toggle('sub2')")|子项目2
+                      au-menu-item(value="sub3", @click="toggle('sub3')")|子项目3
+                  au-menu-item(value="content", @click="toggle('content')")|内容
+                  au-menu-item(value="list", @click="toggle('list')")|列表
+
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [],
+          selected: []
+        }
+      },
+      methods: {
+        toggle (value) {
+          const pos = this.selected.indexOf(value)
+          if (pos > -1) {
+            this.selected.splice(pos, 1)
+          } else {
+            this.selected.push(value)
+          }
+        }
+      }
+    })

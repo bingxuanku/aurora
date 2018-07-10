@@ -1,0 +1,119 @@
+extends ./_layout
+
+block title
+  |Radio
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuRadio
+      .docs-desc
+
+    .docs-section
+      h2|基础选择器
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          div
+            au-radio(label="男", value="male", v-model="form.gender")
+            au-radio(label="女", value="female", v-model="form.gender")
+
+          div
+            au-radio(value="male", v-model="form.gender")|男
+            au-radio(value="female", v-model="form.gender")|女
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|禁用状态
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          div
+            au-radio(label="男", value="male", v-model="form.gender", disabled)
+            au-radio(label="女", value="female", v-model="form.gender", disabled)
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|Radiox组
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          div
+            au-radio-group(:options="options" v-model="form.class")
+          div
+            au-radio-group(v-model="form.class")
+              au-radio(:value="option.value", v-for="option in options")
+                |{{ option.label }}
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data() {
+              return {
+                options: [
+                  {
+                    value: '1',
+                    label: '三年一班'
+                  },
+                  {
+                    value: '2',
+                    label: '三年二班'
+                  },
+                  {
+                    value: '3',
+                    label: '三年三班'
+                  }
+                ]
+              }
+            }
+          }
+
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|属性
+      au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      created () {
+        console.log(this)
+      },
+      data () {
+        return {
+          form: {
+            'class': '3',
+            gender: 'female'
+          },
+          options: [
+            {
+              value: '1',
+              label: '三年一班'
+            },
+            {
+              value: '2',
+              label: '三年二班'
+            },
+            {
+              value: '3',
+              label: '三年三班'
+            }
+          ]
+        }
+      }
+    })

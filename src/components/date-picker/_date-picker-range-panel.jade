@@ -1,0 +1,20 @@
+.au-date-picker-range-panel
+  au-date-picker-panel(
+    v-model="leftValue",
+    ref="leftContent",
+    :range="tempValue",
+    leftRange,
+    :startDate="startDate",
+    :endDate="endDate",
+    :disabledDate="disabledDate"
+  )
+
+  au-date-picker-panel(
+    v-model="rightValue",
+    ref="rightContent",
+    :range="tempValue",
+    rightRange,
+    :startDate="startDate",
+    :endDate="endDate",
+    :disabledDate="disabledDate"
+  )

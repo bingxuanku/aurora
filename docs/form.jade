@@ -1,0 +1,164 @@
+extends ./_layout
+
+block title
+  |Form
+
+block content
+  au-panel
+    .docs-heading
+      h1|Form
+      .docs-desc
+
+    .docs-section
+      h2
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-flex(gutter="20")
+            au-item
+              au-button-group
+                au-button(:type="labelPosition === 'left' ? 'primary': 'default'", @click="labelPosition = 'left'")|Left
+                au-button(:type="labelPosition === 'top' ? 'primary': 'default'", @click="labelPosition = 'top'")|Top
+                au-button(:type="labelPosition === 'right' ? 'primary': 'default'", @click="labelPosition = 'right'")|Right
+
+            au-item(span="4")
+              au-input(v-model="labelWidth", placeholder="请输入label宽度")
+
+        .docs-panel-row
+          au-flex(gutter="30")
+            au-item(style="width: 600px;")
+              au-form(:label-position="labelPosition", :label-width="labelWidth", :model="form", :rules="rules", @submit="onSubmit", @error="onError", ref="myForm")
+                au-form-item(label="姓名", prop="name")
+                  au-input(v-model="form.name", placeholder="请输入姓名")
+                au-form-item(label="邮箱", prop="email", :rules="[{ required: true, message:'请输入邮箱' }, { type: 'email' }]")
+                  au-input(v-model="form.email", placeholder="请输入邮箱")
+                au-form-item(label="性别", :rules="sexRules", prop="gender")
+                  au-radio-group(:options="[{value: '1', label: '男'}, {value: '2', label: '女'}]", v-model="form.gender")
+                au-form-item(label="班级")
+                  au-row
+                    au-col(span="11")
+                      au-form-item(prop="class")
+                        au-select(:options="[{value: '1', label: '三年一班'}, {value: '2', label: '三年二班'}]", v-model="form.class", clearable, placeholder="请选择班级")
+                    au-col.text-center(span="2")|-
+                    au-col(span="11")
+                      au-form-item(prop="class")
+                        au-select(:options="[{value: '1', label: '三年一班'}, {value: '2', label: '三年二班'}]", v-model="form.class", placeholder="请选择班级")
+                au-form-item(label="描述", prop="desc")
+                  au-input(type="textarea", v-model="form.desc", rows="5")
+                au-form-item()
+                  au-checkbox(v-model="form.confirm", label="我同意账户协议")
+
+                au-form-item
+                  au-pop-confirm(position="leftBottom", message="确定要提交吗?", @confirm="confirmHandler")
+                    au-button(type="primary")|提交
+                  |&nbsp;
+                  au-button(type="default", native-type="reset")|重置
+            au-item
+       template.js(scoped="scoped")
+         script.
+           {
+             data () {
+               return {
+                 labelPosition: 'left',
+                 labelWidth: '',
+                 form: {
+                   name: '',
+                   gender: '1',
+                   class: '',
+                   desc: '',
+                   email: '',
+                   confirm: false
+                 },
+                 attrs: [
+                 ],
+                 rules: {
+                   name: [
+                     { required: true, message:'请输入姓名', whitespace: true},
+                     { validator (value, callback) {
+                       setTimeout(() => {
+
+                         const result = value.match(/abc/) != null
+                         console.log('validate', result)
+                         callback(result)
+                       }, 200)
+                     }, message: '内容中需包含abc' }
+                   ],
+                   'class': [
+                     { required: true, message:'请选择班级' }
+                   ],
+                   desc: [
+                     { required: true, message:'请输入描述' },
+                     { max: 8, trigger: 'change, blur' }
+                   ]
+                 },
+                 sexRules: [
+                   { required: true, message:'请选择班级' },
+                   {
+                     message: '不能选择女性',
+                     validator (value, callback) {
+                       callback(value !== '2')
+                     }
+                   }
+                 ]
+               }
+             },
+             methods: {
+               confirmHandler (){
+                 this.$refs.myForm.validate()
+               },
+               onSubmit (formData) {
+                 console.log('submiting', formData)
+               },
+               onError (formData){
+                 console.log('validate error', formData)
+               }
+             }
+           }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+
+
+
+    .docs-section
+      h2|Inline表单
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-flex(gutter="30")
+            au-item(style="width: 600px;")
+              au-form(inline, label-position="top")
+                au-form-item(label="账号")
+                  au-input(v-model="form.name", placeholder="请输入账号")
+                au-form-item(label="账号")
+                  au-input(type="password", v-model="form.name", placeholder="请输入密码")
+                au-form-item(label="账号")
+                  au-radio-group(:options="[{value: '1', label: '男'}, {value: '2', label: '女'}]", v-model="form.gender")
+                au-form-item(label="账号")
+                  au-select(:options="[{value: '1', label: '三年一班'}, {value: '2', label: '三年二班'}]", v-model="form.class", placeholder="请选择班级")
+
+                au-form-item
+                  au-button(type="primary")|提交
+                  |&nbsp;
+                  au-button(type="default")|重置
+            au-item
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|属性
+
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins
+    })

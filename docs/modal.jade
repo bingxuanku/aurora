@@ -1,0 +1,75 @@
+extends ./_layout
+
+block title
+  |Modal
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuModal
+      .docs-desc
+
+    .docs-section
+      h2|基础Modal
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-button(type="primary", size="small", @click="isShow = true")|显示
+          au-modal(title="新页面", v-model="isShow" ,:mask-closeable="true")
+            div|这里是正文内容
+            div|这里是正文内容
+            div|这里是正文内容
+            div
+              au-select(v-model="select", multiple, filter)
+                au-option(value="1", label="哈哈")
+                au-option(value="2", label="呵呵")
+            div(slot="footer")
+              au-button(type="default", @click="isShow = false")|取消
+              au-button(type="primary", @click="step2 = true")|提交
+
+          au-modal(title="第二步", v-model="step2")
+            div|这里是第二步
+            div(slot="footer")
+              au-button(type="primary", size="small")|提交
+              au-button(type="default", size="small", @click="step2 = false")|取消
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                select: ['1'],
+                isShow: false,
+                step2: false
+              }
+            }
+          }
+
+      .docs-panel
+        .docs-panel-content
+
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [
+            {
+              name: 'column',
+              desc: '列信息',
+              type: 'Array',
+              default: 'null'
+            }
+          ],
+          isShow: false,
+          step2: false
+        }
+      }
+    })

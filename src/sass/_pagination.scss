@@ -1,0 +1,129 @@
+.au-pagination {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.au-pagination-item {
+  display: flex;
+  margin-right: 20px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.au-pagination-left {
+  justify-content: flex-start;
+}
+
+.au-pagination-center {
+  justify-content: center;
+}
+
+.au-pagination-right {
+  justify-content: flex-end;
+}
+
+.au-pagination-left {
+  justify-content: flex-start;
+}
+
+.au-pagination-right {
+  justify-content: flex-end;
+}
+
+.au-pagination-center {
+  justify-content: center;
+}
+
+.au-pagination-link {
+  font-size: $fontsize-small;
+  border: 1px solid $color-border;
+  color: $color-black-light-extra;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: all $transition-during;
+  @include flex-center-center();
+
+  .au-icon {
+    margin: 0 4px;
+    font-size: $fontsize-large;
+  }
+
+  &:hover {
+    color: $color-primary;
+    border-color: $color-primary;
+  }
+
+  &.au-pagination-disabled {
+    cursor: not-allowed;
+    color: $color-gray-light;
+    border-color: $color-border;
+    background-color: $color-white;
+  }
+
+  &.active {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.au-pagination-link-dot {
+  font-size: $fontsize-default;
+  color: $color-black-light-extra;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 2px;
+  margin-right: 10px;
+  cursor: pointer;
+  @include flex-center-center();
+  width: 20px;
+  transition: all $transition-during;
+
+  .au-ellipsis {
+    color: $color-gray-light-extra;
+  }
+
+  .au-angle {
+    display: none;
+  }
+
+  &:hover {
+    .au-ellipsis {
+      display: none;
+    }
+    .au-angle {
+      display: block;
+      color: $color-primary;
+    }
+  }
+
+  .au-icon {
+    font-size: $fontsize-large;
+  }
+}
+
+.au-pagination-text {
+  font-size: $fontsize-small;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.au-pagination-input-wrapper {
+  width: 40px;
+  margin: 0 5px;
+  input[type="text"] {
+    text-align: center;
+  }
+}

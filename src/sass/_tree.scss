@@ -1,0 +1,35 @@
+.au-tree-item {
+  display: flex;
+  overflow: hidden;
+  font-size: $tree-item-fontsize;
+  line-height: $tree-item-height;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-white-light;
+  }
+}
+
+.au-tree-item-expand {
+  width: $tree-expand-width;
+  text-align: center;
+  .au-icon {
+    transition: transform $transition-during;
+  }
+
+  &.au-tree-item-expanded .au-icon {
+    transform: rotate(90deg);
+  }
+}
+
+.au-tree-checkbox {
+  margin-right: 10px;
+}
+
+.au-tree-item-content {
+  flex: 1;
+}
+
+.au-tree-children {
+  margin-left: $tree-item-offset;
+}

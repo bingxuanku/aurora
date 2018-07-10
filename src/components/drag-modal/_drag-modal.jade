@@ -1,0 +1,19 @@
+transition(name="au-drag-modal")
+  .au-drag-modal(v-show="value", :style="style", @mousedown="onMousedownModal")
+    .au-modal-heading(
+      :class="{ 'au-modal-heading-dragging': isMoving }"
+    )
+      .au-modal-heading-left
+        .au-modal-label
+          au-icon(:icon="icon", v-if="icon")
+          |{{ title }}
+
+      .au-modal-heading-right(v-if="!noClose")
+        div.au-modal-close(@click="closeHandler")
+          au-icon(icon="close")
+
+    .au-modal-content
+      slot
+
+    .au-modal-footer
+      slot(name="footer")

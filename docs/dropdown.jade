@@ -1,0 +1,46 @@
+extends ./_layout
+
+block title
+  |Dropdown
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuDropdown
+      .docs-desc
+
+    .docs-section
+      h2|基础下拉菜单
+      .docs-desc
+        p|基础下拉菜单的用法
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-dropdown
+            au-button|打开打开
+            au-menu
+              au-menu-item(href="http://www.baidu.com", target="_blank")|选项1
+              au-menu-item|选项2
+              au-menu-item|选项3
+          au-dropdown(trigger="click")
+            au-button|打开打开
+            au-menu
+              au-menu-item(href="http://www.baidu.com")|选项1
+              au-menu-item|选项2
+              au-menu-item|选项3
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {}
+      }
+    })

@@ -1,0 +1,63 @@
+extends ./_layout
+
+block title
+  |Alert
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuAlert
+      .docs-desc
+
+    .docs-section
+      h2
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-alert(type="info", title="abc", desc="def", show-icon, closeable)
+        .docs-panel-row
+          au-alert(type="success", title="abc", desc="def", show-icon, closeable)
+        .docs-panel-row
+          au-alert(type="danger", title="abc", desc="def", show-icon, closeable)
+        .docs-panel-row
+          au-alert(type="warning", show-icon, closeable)
+            div(slot="title")
+              a(href="#")|你好啊
+            div(slot="desc")
+              |您访问的页面不存在,&nbsp;
+              a(href="#")|点击关闭
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+              }
+            },
+            mounted () {
+            },
+            methods: {
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: []
+        }
+      }
+    })

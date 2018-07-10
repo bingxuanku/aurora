@@ -1,0 +1,64 @@
+.au-panel {
+  border: 1px solid $color-border;
+  margin-bottom: 20px;
+  background-color: $color-white;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.au-panel-heading {
+  color: $color-black-light;
+  background-color: $color-white-light;
+  border-bottom: 1px solid $color-border;
+  font-size: $fontsize-default;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.au-panel-heading-left {
+  flex: 1;
+  .au-icon {
+    margin-right: 10px;
+  }
+}
+
+.au-panel-collapse-icon {
+  user-select: none;
+  margin-right: -20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: $color-black-light-extra;
+  @include flex-center-center();
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.au-panel-content {
+  font-size: $fontsize-default;
+  transition: height $transition-during;
+  position: relative;
+  overflow: hidden;
+  margin-top: -1px;
+  will-change: height;
+}
+
+.au-panel-content-inner {
+  padding: 20px;
+}
+
+.au-panel-footer {
+  // padding-top: 20px;
+}
+
+.au-panel-heading-right {
+  font-weight: normal;
+  display: flex;
+}

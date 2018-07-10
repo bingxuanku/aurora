@@ -1,0 +1,10 @@
+.au-tooltip-wrapper
+  slot
+  popup(
+    ref="popup",
+    :position="position",
+    :show-arrow="true",
+    type="darker"
+  )
+    .au-tooltip
+      |{{ message }}

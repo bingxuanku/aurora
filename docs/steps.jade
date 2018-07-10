@@ -1,0 +1,65 @@
+extends ./_layout
+
+block title
+  |Steps
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuSteps
+      .docs-desc
+
+    .docs-section
+      h2
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-steps(active-index="1", dot)
+            au-step(title="title1", desc="子标题", icon="home")
+            au-step(title="第二次风控调用", desc="子标题", icon="home")
+            au-step(title="第二次风控调用", desc="子标题", icon="home")
+            au-step(title="第二次风控调用", desc="子标题", icon="home")
+            au-step(title="第二次风控调用", desc="子标题", icon="home")
+            au-step(title="第二次风控调用", desc="子标题", icon="home")
+            au-step(title="第二次风控调用", desc="子标题", icon="home")
+            au-step(title="title3", desc="子标题")
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                active: '2',
+                showStep3: false
+              }
+            },
+            mounted () {
+              setTimeout(() => {
+                this.showStep3 = true
+              }, 1000)
+            },
+            methods: {
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: []
+        }
+      }
+    })

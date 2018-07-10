@@ -1,0 +1,76 @@
+extends ./_layout
+
+block title
+  |Message
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuMessage
+      .docs-desc
+
+    .docs-section
+      h2|提示信息
+      .docs-desc
+        p|提示信息的用法
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-input(v-model="message")
+        .docs-panel-row
+          au-button(size="small", @click="showInfo")|信息
+          au-button(size="small", @click="showSuccess")|成功
+          au-button(size="small", @click="showDanger")|失败
+          au-button(size="small", @click="showWarning")|警告
+          au-button(size="small", @click="showLoading")|加载中
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                title: '',
+                message: '提示信息提示信息提示信息提示信息提示信息提示信息提示信息提示信息提示信息提示信息',
+                func: null
+              }
+            },
+            methods: {
+              showInfo () {
+                this.$message('info', this.title, this.message, {
+                  buttons: [{
+                    title: '确定',
+                    callback: () => {
+                      console.log('fuck you')
+                    }
+                  }]
+                })
+              },
+              showDanger () {
+                this.$message('error', this.title, this.message)
+              },
+              showSuccess () {
+                this.$message('success', this.title, this.message)
+              },
+              showWarning () {
+                this.$message('warning', this.title, this.message)
+              },
+              showLoading () {
+                if (this.func) {
+                  this.func()
+                  this.func = null
+                } else {
+                  this.func = this.$message('loading', this.title, this.message)
+                }
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins
+    })

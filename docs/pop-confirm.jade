@@ -1,0 +1,131 @@
+extends ./_layout
+
+block title
+  |PopConfrim
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuPopConfrim
+      .docs-desc
+
+    .docs-section
+      h2|基础选择器
+      .docs-desc
+        p|基础选择器的用法
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-flex(wrap="wrap")
+            au-item(offset="4", span="16")
+              au-flex(gutter="20")
+                au-item(style="text-align: center", span="8", offset="8")
+                  au-pop-confirm(position="topLeft", message="这是一段内容确定要删除吗？", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+                  au-pop-confirm(position="top", message="这是一段内容确定要删除吗？", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+                  au-pop-confirm(position="topRight", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+              au-flex(gutter="20")
+                au-item(style="text-align: right", span="8")
+                  au-pop-confirm(position="leftTop", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+                  br
+                  au-pop-confirm(position="left", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+                  br
+                  au-pop-confirm(position="leftBottom", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+
+                au-item(style="text-align: left", span="8", offset="8")
+                  au-pop-confirm(position="rightTop", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+                  br
+                  au-pop-confirm(position="right", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+                  br
+                  au-pop-confirm(position="rightBottom", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+              au-flex(gutter="20")
+                au-item(style="text-align: center", span="8", offset="8")
+                  au-pop-confirm(position="bottomLeft", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+                  au-pop-confirm(position="bottom", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+                  au-pop-confirm(position="bottomRight", message="确定要提交吗?", @confirm="confirmHandler", @cancel="cancelHandler")
+                    au-button|提交
+      template.js(scoped="scoped")
+        script.
+          {
+            methods: {
+              confirmHandler () {
+                console.log('confirm')
+              },
+              cancelHandler () {
+                console.log('cancel')
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|属性
+      au-table#table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+    .docs-section
+      h2|事件
+      au-table#table(:data="events")
+        au-table-column(v-for="column in eventColumns", :label="column.label", :attr-name="column.attrName")
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [
+            {
+              name: 'message',
+              desc: '显示的内容',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'position',
+              desc: '显示的位置(可选值: top, left, right, bottom, topLeft, topRight, leftTop, leftBottom, bottomLeft, bottomRight, rightTop, rightBottom)',
+              type: 'String',
+              default: 'top'
+            },
+            {
+              name: 'trigger',
+              desc: '触发的方式(可选值: click, hover, focus)',
+              type: 'String',
+              default: 'hover'
+            }
+          ],
+          events: [
+            {
+              name: 'confirm',
+              desc: '用户点击确认事件',
+              args: '($event: Event)'
+            },
+            {
+              name: 'cancel',
+              desc: '用户点击取消事件',
+              args: '($event: Event)'
+            }
+          ]
+        }
+      },
+      methods: {
+        confirmHandler () {
+          console.log('confirm')
+        },
+        cancelHandler () {
+          console.log('cancel')
+        }
+      }
+    })

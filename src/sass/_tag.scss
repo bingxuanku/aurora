@@ -1,0 +1,42 @@
+.au-tag {
+  display: inline-flex;
+  font-size: $fontsize-small;
+  padding: 0 10px;
+  height: 22px;
+  line-height: 22px;
+  background-color: $color-white-dark;
+}
+
+.au-tag-content {
+  flex-grow: 1;
+}
+
+.au-tag-icon {
+  @include flex-center-center();
+  padding-left: 6px;
+  .au-icon {
+    font-size: $fontsize-small;
+    cursor: pointer;
+  }
+}
+@each $name, $value in $tag-colors {
+  .au-tag-#{$name} {
+    background-color: $value;
+    color: $color-white;
+
+    &.au-tag-bordered {
+      background-color: lighten($value, 20%);
+      color: darken($value, 10%);
+      border: 1px solid darken($value, 10%);
+      padding: 0 9px;
+    }
+  }
+}
+
+.au-tag-light {
+  color: $color-black-light-extra !important;
+}
+
+.au-tag-dark.au-tag-bordered {
+  color: $color-white;
+}

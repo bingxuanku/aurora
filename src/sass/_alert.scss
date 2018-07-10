@@ -1,0 +1,87 @@
+.au-alert {
+  padding: 10px;
+  color: $color-white;
+  display: flex;
+
+  a {
+    color: $color-white;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.au-alert-info {
+  background-color: $color-info;
+}
+
+.au-alert-success {
+  background-color: $color-success;
+}
+
+.au-alert-warning {
+  background-color: $color-warning;
+}
+
+.au-alert-danger {
+  background-color: $color-danger;
+}
+
+.au-alert-icon {
+  width: 30px;
+  .au-icon {
+    font-size: 20px;
+  }
+}
+
+.au-alert-content {
+  flex: 1;
+}
+
+.au-alert-title {
+  font-size: $fontsize-default;
+  line-height: ($fontsize-default * 1.2);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.au-alert-desc {
+  font-size: $fontsize-small;
+  line-height: ($fontsize-small * 1.2);
+}
+
+.au-alert-close {
+  .au-icon {
+    position: relative;
+    font-size: $fontsize-default;
+    cursor: pointer;
+    &:after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+    }
+  }
+}
+
+.alert-fade-enter {
+  opacity: 0;
+}
+
+.alert-fade-enter-to {
+  opacity: 1;
+  transition: opacity $transition-during;
+}
+
+.alert-fade-leave {
+  opacity: 1;
+}
+
+.alert-fade-leave-to {
+  opacity: 0;
+  transition: opacity $transition-during;
+}

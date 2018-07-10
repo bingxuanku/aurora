@@ -1,0 +1,96 @@
+extends ./_layout
+
+block title
+  |Tag
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuTag
+      .docs-desc
+
+    .docs-section
+      h2|颜色选择
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-tag(color="red")|标签
+          au-tag(color="orange")|标签
+          au-tag(color="yellow")|标签
+          au-tag(color="green")|标签
+          au-tag(color="cyan")|标签
+          au-tag(color="sky")|标签
+          au-tag(color="blue")|标签
+          au-tag(color="purple")|标签
+          au-tag(color="pink")|标签
+          au-tag(color="light")|标签
+          au-tag(color="gray")|标签
+          au-tag(color="dark")|标签
+        .docs-panel-row
+          au-tag(color="red", bordered)|标签
+          au-tag(color="orange", bordered)|标签
+          au-tag(color="yellow", bordered)|标签
+          au-tag(color="green", bordered)|标签
+          au-tag(color="cyan", bordered)|标签
+          au-tag(color="sky", bordered)|标签
+          au-tag(color="blue", bordered)|标签
+          au-tag(color="purple", bordered)|标签
+          au-tag(color="pink", bordered)|标签
+          au-tag(color="light", bordered)|标签
+          au-tag(color="gray", bordered)|标签
+          au-tag(color="dark", bordered)|标签
+      template.js(scoped="scoped")
+        script.
+          {
+            methods: {
+
+            }
+          }
+      .docs-desc
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|关闭按钮
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-tag(color="red", closeable, @close="onClose")|标签
+          au-tag(color="orange", closeable, @close="onClose")|标签
+          au-tag(color="yellow", closeable, @close="onClose")|标签
+          au-tag(color="green", closeable, @close="onClose")|标签
+          au-tag(color="cyan", closeable, @close="onClose")|标签
+          au-tag(color="sky", closeable, @close="onClose")|标签
+          au-tag(color="blue", closeable, @close="onClose")|标签
+          au-tag(color="purple", closeable, @close="onClose")|标签
+          au-tag(color="pink", closeable, @close="onClose")|标签
+          au-tag(color="light", closeable, @close="onClose")|标签
+          au-tag(color="gray", closeable, @close="onClose")|标签
+          au-tag(color="dark", closeable, @close="onClose")|标签
+      template.js(scoped="scoped")
+        script.
+          {
+            methods: {
+              onClose () {
+                console.log('On close')
+              }
+            }
+          }
+      .docs-desc
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+        }
+      }
+    })

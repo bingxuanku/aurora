@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Icon</title>
+    <link rel="stylesheet" href="../src/sass/main.css">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./docs.css">
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="docs-heading">
+        <h1>AuIcon</h1>
+      </div>
+
+      <div class="docs-section">
+        <h2>属性</h2>
+        <table class="docs-table">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>默认值</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>icon</td>
+              <td>图标的名称</td>
+              <td>String</td>
+              <td>default</td>
+            </tr>
+            <tr>
+              <td>size</td>
+              <td>图标的的大小 (可选值: `large` , `default` , `small`)</td>
+              <td>String</td>
+              <td>default</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script src="../src/main.js"></script>
+    <script>
+      new Vue({
+        el: '#app'
+      })
+    </script>
+  </body>
+</html>

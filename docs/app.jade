@@ -1,0 +1,36 @@
+extends ./_layout
+
+block title
+  |App
+
+block content
+  .docs-heading
+    h1|AuApp
+    .docs-desc
+
+  .docs-section
+    h2|基础应用
+    .docs-desc
+      p|基础应用的用法
+    .docs-panel
+      .docs-panel-row
+        au-app
+          au-header
+            div(slot="logo")|Hello
+          au-sideber
+            au-menu
+          au-container
+            au-panel
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins: [ attrMixins ],
+      data () {
+        return {
+          page: 1,
+          itemCount: 200
+        }
+      }
+    })

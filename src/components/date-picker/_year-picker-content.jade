@@ -1,0 +1,18 @@
+div.au-year-picker-content
+  div.au-date-picker-title-bar
+    .au-date-picker-button(@click="prevTenYear")
+      au-icon(icon="angle-double-left")
+
+    .au-date-picker-text
+      |{{ startYear }}年 - {{ endYear }}年
+
+    .au-date-picker-button(@click="nextTenYear")
+      au-icon(icon="angle-double-right")
+
+  div.au-date-picker-content
+    .au-year-picker-list
+      .au-year-picker-item.au-date-picker-item(
+        :class="{ 'au-text-current': currentYear == year.year, 'au-disabled': year.isDisabled }",
+        v-for="year in years",
+        @click="setYear(year)"
+      )|{{year.year}}

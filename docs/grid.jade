@@ -1,0 +1,166 @@
+extends ./_layout
+
+block title
+  |Grid
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuRow
+      .docs-desc
+
+    .docs-section
+      h2|基本布局
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-row(:gutter="10")
+            au-col(:span="4")
+              .item|hello
+            au-col(:span="20")
+              .item|hello world
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|栅格
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-row(:gutter="10")
+            au-col(v-for="item in list", span="4")
+              .item|{{ item }}
+
+          au-row(gutter="10")
+            au-col(span="12")
+              .item
+            au-col(span="12")
+              .item
+          au-row(gutter="10")
+            au-col(span="8")
+              .item
+            au-col(span="8")
+              .item
+            au-col(span="8")
+              .item
+
+          au-row(gutter="10")
+            au-col(span="6")
+              .item
+            au-col(span="6")
+              .item
+            au-col(span="6")
+              .item
+            au-col(span="6")
+              .item
+
+          au-row(gutter="10")
+            au-col(span="5", offset="1")
+              .item
+            au-col(span="3", offset="9")
+              .item
+            au-col(span="2", offset="4")
+              .item
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|Flex模式
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-row(type="flex", justify-content="space-between", :gutter="10")
+            au-col(:span="4")
+              .item|hello
+            au-col(:span="4")
+              .item|hello world
+
+          au-row(type="flex", justify-content="space-around", :gutter="10")
+            au-col(:span="4")
+              .item|hello
+            au-col(:span="4")
+              .item|hello world
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+    .docs-section
+      h2|AuRow属性
+      au-table(:data="flexAttrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+    .docs-section
+      h2|AuCol属性
+      au-table(:data="itemAttrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+
+block script
+  style.
+    .au-row {
+      margin-bottom: 20px;
+    }
+    .item {
+      background-color: #eee;
+      min-height: 40px;
+      line-height: 40px;
+      padding: 0 10px;
+    }
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          flexAttrs: [
+            {
+              name: 'justify-content',
+              desc: '同justify-content',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'align-items',
+              desc: '同align-items',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'gutter',
+              desc: '列外间距(像素)',
+              type: 'Number',
+              default: '0'
+            },
+            {
+              name: 'type',
+              desc: '可以选择flex模式',
+              type: 'String',
+              default: ''
+            }
+          ],
+          itemAttrs: [
+            {
+              name: 'span',
+              desc: '栅格占格数, 每行24格',
+              type: 'Number',
+              default: 'null'
+            },
+            {
+              name: 'offset',
+              desc: '栅格左侧偏移占格数',
+              type: 'Number',
+              default: 'null'
+            }
+          ],
+          column: 4,
+          list: [1, 2, 3, 4, 5, 6]
+        }
+      }
+    })

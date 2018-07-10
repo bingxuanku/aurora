@@ -1,0 +1,140 @@
+.au-message-center {
+  position: fixed;
+  top: 4px;
+  left: 0;
+  width: 100%;
+  text-align: right;
+  pointer-events: none;
+  z-index: $zindex-message;
+}
+
+.au-message {
+
+}
+
+.au-message-inner {
+  display: inline-block;
+  width: $message-width;
+  height: $message-height;
+  pointer-events: all;
+  box-shadow: $message-shadow;
+  line-height: 40px;
+  color: $color-white;
+  font-weight: 600;
+  position: relative;
+  clear: both;
+  text-align: center;
+  margin: 10px;
+}
+
+.au-message-success {
+  .au-message-inner {
+    background-color: rgba($color-success, 0.95);
+  }
+}
+
+.au-message-danger, .au-message-error {
+  .au-message-inner {
+    background-color: rgba($color-danger, 0.95);
+  }
+}
+
+.au-message-warning {
+  .au-message-inner {
+    background-color: rgba($color-warning, 0.95);
+  }
+}
+
+.au-message-info, .au-message-loading {
+  .au-message-inner {
+    background-color: rgba($color-info, 0.95);
+  }
+}
+
+.au-message-icon {
+  width: 50px;
+  height: 50px;
+  float: left;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 10px;
+  .au-icon {
+    font-size: 28px;
+    color: $color-white;
+  }
+}
+
+.au-message-content {
+  padding: 10px;
+  margin-right: $message-button-width;
+  text-align: left;
+  margin-left: 60px;
+  overflow: hidden;
+}
+
+.au-message-title {
+  font-size: $fontsize-default;
+  line-height: ($fontsize-default * 1.2);
+  font-weight: bold;
+  margin-bottom: 5px;
+  @include text-overflowing();
+}
+
+.au-message-desc {
+  font-size: $fontsize-small;
+  line-height: ($fontsize-small * 1.2);
+  height: ($fontsize-small * 1.2) * 2;
+  overflow: hidden;
+}
+
+.au-message-only-desc .au-message-desc {
+  height: ($fontsize-small * 1.2) * 4;
+}
+
+.au-message-buttons {
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  width: $message-button-width;
+  height: $message-height;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.au-message-button {
+  @include flex-center-center();
+  font-size: $fontsize-small;
+  color: $color-white;
+  flex: 1;
+  transition: background-color $transition-during;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.message-fade-enter {
+  transform: translateX($message-width);
+}
+
+.message-fade-enter-to {
+  transform: translateX(0);
+  transition: transform $message-transition-during;
+}
+
+.message-fade-leave {
+  transform: translateX(0);
+}
+
+.message-fade-leave-to {
+  transform: translateX($message-width);
+  transition: transform $message-transition-during;
+}

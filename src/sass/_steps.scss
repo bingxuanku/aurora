@@ -1,0 +1,139 @@
+.au-steps {
+  position: relative;
+}
+
+.au-steps-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.au-steps-line {
+  position: absolute;
+  height: 2px;
+  background-color: $steps-line-color;
+  top: 14px;
+}
+
+.au-step {
+  width: 120px;
+  text-align: center;
+}
+
+.au-step-icon {
+  width: 50px;
+  height: 30px;
+  padding: 0 10px;
+  margin: 0 auto;
+  color: $steps-icon-text-color;
+  position: relative;
+  @include flex-center-center();
+
+  .au-icon {
+    font-size: $fontsize-large-extra;
+  }
+}
+
+.au-step-index {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  border: 2px solid $steps-icon-color;
+  background-color: $color-white;
+  font-size: $fontsize-large;
+  color: $steps-icon-text-color;
+  @include flex-center-center();
+}
+
+.au-step-title, .au-step-desc {
+  margin-top: 10px;
+  color: $color-silver-light;
+}
+
+.au-step-title {
+  font-size: $fontsize-default;
+  line-height: $fontsize-default * 1.2;
+}
+.au-step-desc {
+  font-size: $fontsize-small;
+  line-height: $fontsize-small * 1.2;
+}
+
+.au-steps-line-active {
+ background-color: $steps-active-color;
+}
+
+.au-step-dot {
+  width: $steps-dot-width;
+  height: $steps-dot-width;
+  border-radius: $steps-dot-width;
+  background-color: $steps-icon-color;
+}
+
+.au-steps-dot {
+  .au-step-icon {
+    width: $steps-dot-width;
+    padding: 0;
+  }
+  .au-step-title {
+    margin-top: 0;
+  }
+}
+
+.au-step-active {
+  .au-step-icon {
+    color: $steps-active-color;
+  }
+  .au-step-index {
+    border-color: $steps-active-color;
+    color: $steps-active-color;
+  }
+  .au-step-title, .au-step-desc {
+
+  }
+}
+
+.au-step-current {
+  .au-step-icon {
+    color: $color-primary;
+  }
+  .au-step-index {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  .au-step-title, .au-step-desc {
+    color: $steps-active-color;
+  }
+
+  .au-step-title {
+    font-weight: bold;
+  }
+}
+
+.au-steps-dot {
+  .au-step-active {
+    .au-step-icon {
+      width: $steps-dot-active-width;
+    }
+    .au-step-dot {
+      background-color: $steps-active-color;
+      width: $steps-dot-active-width;
+      height: $steps-dot-active-width;
+      border-radius: $steps-dot-active-width;
+    }
+  }
+}
+
+.au-steps-dot {
+  .au-step-current {
+    .au-step-icon {
+      width: $steps-dot-current-width;
+    }
+    .au-step-dot {
+      background-color: $color-primary;
+      width: $steps-dot-current-width;
+      height: $steps-dot-current-width;
+      border-radius: $steps-dot-current-width;
+    }
+  }
+}

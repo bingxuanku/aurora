@@ -1,0 +1,572 @@
+
+extends ./_layout
+
+block title
+  |Table
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuTable
+      .docs-desc
+
+    .docs-section
+      h2|固定列表格
+      .docs-desc
+        p|固定列表格的用法
+
+      template.html
+        .docs-panel-row
+          au-table(:data="data1", max-height="400", :loading="isShowLoading", bordered, @sort-change="sortChange")
+            au-table-column(
+              label="ID",
+              attr-name="id",
+              fixed,
+              :sortable="true"
+            )
+            au-table-column(
+              label="Name",
+              attr-name="name",
+              :sortable="true",
+              :sort-method="sortName"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              sortable="custom"
+            )
+            au-table-column(
+              label="操作",
+              fixed,
+              nowrap
+            )
+              template(scope="scope")
+                au-button(type="success", size="small", href="#")|添加
+                au-button(type="primary", size="small", @click.native="editHandler(scope.index, scope.data)")|编辑
+                au-button(type="primary", size="small", @click.native="editHandler(scope.index, scope.data)", v-if="scope.index === 2")|发布
+                au-button(type="warning", size="small", @click.native="editHandler(scope.index, scope.data)")|更新
+                au-button(type="danger", size="small", @click.native="deleteHandler(scope.index, scope.data)")|删除
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                isShowLoading: false,
+                data1 : [
+                  { id: 1, name: 'kevin', age: '28' },
+                  { id: 3, name: 'lucy', age: '26' },
+                  { id: 2, name: 'peter', age: '27' },
+                  { id: 4, name: 'lily', age: '25' }
+                ]
+              }
+            },
+            methods: {
+              sortName (type, a, b) {
+                console.log(type)
+                let result = a.name.match(/^k/) != null ? 1 : -1
+                if (type === 'desc') {
+                  result = -1 * result
+                }
+                return result
+              },
+              sortChange (obj) {
+                console.log('sortChange', obj)
+                if (obj.prop === 'age') {
+                  this.isShowLoading = true
+                  setTimeout(() => {
+                    const data = this.data1.slice()
+                    data.push(this.data1[this.data1.length - 1])
+                    this.data1 = data
+                    this.isShowLoading = false
+                  }, 1000)
+                }
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|基础表格
+      .docs-desc
+        p|基础表格的用法
+
+      template.html
+        .docs-panel-row
+          au-checkbox(label="显示loading", v-model="isShowLoading")
+        .docs-panel-row
+          au-table(:data="data", :loading="isShowLoading")
+            au-table-column(
+              label="ID",
+              attr-name="id"
+            )
+            au-table-column(
+              label="Name",
+              attr-name="name"
+            )
+            au-table-column(
+              label="Age",
+              attr-name="age",
+              v-if="showAge"
+            )
+            au-table-column(
+              label="操作",
+              nowrap
+            )
+              template(scope="scope")
+                au-button(type="success", size="small", href="#")|添加
+                au-button(type="primary", size="small", @click.native="editHandler(scope.index, scope.data)")|编辑
+                au-button(type="primary", size="small", @click.native="editHandler(scope.index, scope.data)", v-if="scope.index === 2")|发布
+                au-button(type="warning", size="small", @click.native="editHandler(scope.index, scope.data)")|更新
+                au-button(type="danger", size="small", @click.native="deleteHandler(scope.index, scope.data)")|删除
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                isShowLoading: false,
+                data : [
+                  { id: 1, name: 'kevin', age: '28' },
+                  { id: 2, name: 'kevin', age: '27' },
+                  { id: 3, name: 'kevin', age: '26' },
+                  { id: 4, name: 'kevin', age: '25' }
+                ]
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|空表格
+      .docs-desc
+        p|空表格的用法
+
+      template.html
+        .docs-panel-row
+          au-table(:data="data2")
+            div(slot="empty")
+              |还没有数据, 点击
+              au-button(size="mini", type="primary", @click="addData")|添加
+
+            au-table-column(
+              label="ID",
+              attr-name="id"
+            )
+            au-table-column(
+              label="名称",
+              attr-name="name"
+            )
+            au-table-column(
+              label="年龄",
+              attr-name="age"
+            )
+            au-table-column(
+              label="操作"
+            )
+              template(scope="scope")
+                au-button(type="danger", size="mini", @click.native="removeHandler(scope.index)")|删除
+                au-button(type="success", size="mini", @click.native="addData", v-if="scope.index === 0 || scope.index + 1 < data2.length")|添加
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                id: 1,
+                data2: []
+              }
+            },
+            methods: {
+              addData () {
+                this.data2.push({id:this.id++,name:'kevin',age:28})
+              },
+              removeHandler (index) {
+                this.data2.splice(index, 1)
+                // this.data2 = this.data2.slice()
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+
+    .docs-section
+      h2|带分页表格
+      .docs-desc
+        p|带分页表格的用法
+
+      template.html
+        .docs-panel-row
+          au-table(:data="data")
+            au-table-column(
+              label="ID",
+              attr-name="id"
+            )
+            au-table-column(
+              label="名称",
+              attr-name="name"
+            )
+            au-table-column(
+              label="年龄",
+              attr-name="age"
+            )
+          au-pagination(v-model="page", :item-count="itemCount", align="right")
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                page: 1,
+                itemCount: 200
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|列表格
+      .docs-desc
+        p|基础表格的用法
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-table(:data="keyValues", :show-header="false", bordered)
+            au-table-column(
+              attr-name="key",
+              highlight
+            )
+            au-table-column(
+              attr-name="value"
+            )
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                keyValues: [
+                  {
+                    key: '注册手机',
+                    value: '18300001511'
+                  },
+                  {
+                    key: '客户姓名',
+                    value: '叶一'
+                  },
+                  {
+                    key: '身份证号',
+                    value: '420502199001010016'
+                  }
+                ],
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|checkbox表格
+      .docs-desc
+        p|checkbox表格的用法
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-table(ref="table", :data="data")
+            au-table-column(
+              type="checkbox",
+              v-model="checkeds"
+            )
+            au-table-column(
+              label="ID",
+              attr-name="id"
+            )
+            au-table-column(
+              label="Name",
+              attr-name="name",
+              style="width:200px"
+            )
+            au-table-column(
+              label="操作",
+              :style="{ width: '200px' }"
+            )
+              template(scope="scope")
+                au-button(type="primary", size="small", @click.native="editHandler(scope.index, scope.data)")|编辑
+                au-button(type="danger", size="small", @click.native="deleteHandler(scope.index, scope.data)")|删除
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                data : [
+                  { id: 1, name: 'kevin', age: '28' },
+                  { id: 2, name: 'kevin', age: '27' },
+                  { id: 3, name: 'kevin', age: '26' },
+                  { id: 4, name: 'kevin', age: '25' }
+                ],
+                checkeds: [
+                  data[1],
+                  data[2]
+                ]
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+
+    .docs-section
+      h2|多层级属性
+      .docs-desc
+        p|带分页表格的用法
+
+      template.html
+        .docs-panel-row
+          au-table(:data="deepData")
+            au-table-column(
+              label="Name",
+              attr-name="name"
+            )
+            au-table-column(
+              label="Parent name",
+              attr-name="parent.name"
+            )
+            au-table-column(
+              label="Car Id",
+              attr-name="parent.car.id"
+            )
+            au-table-column(
+              label="Cat Name",
+              attr-name="cat[1].name"
+            )
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                deepData: [
+                  {
+                    name: 'kevin',
+                    parent: {
+                      name: 'kevin\'s father',
+                      car: {
+                        id: '123'
+                      }
+                    },
+                    cat: [
+                      { name: 'katty' }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|AuTable属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+    .docs-section
+      h2|AuTableColumn属性
+      au-table(:data="columnAttrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+
+block script
+  script.
+    const data = [
+      { id: 1, name: 'kevin', age: '28' },
+      { id: 2, name: 'kevin', age: '27' },
+      { id: 3, name: 'kevin', age: '26' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' },
+      { id: 4, name: 'kevin', age: '25' }
+    ]
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          showAge: false,
+          attrs: [
+            {
+              name: 'data',
+              desc: '数据内容',
+              type: 'Array',
+              default: '[]'
+            },
+            {
+              name: 'show-header',
+              desc: '是否显示标题',
+              type: 'Boolean',
+              default: 'true'
+            },
+            {
+              name: 'loading',
+              desc: '是否显示加载中样式',
+              type: 'Boolean',
+              default: 'false'
+            }
+          ],
+          columnAttrs: [
+            {
+              name: 'label',
+              desc: '显示的标题',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'attr-name',
+              desc: '属性名',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'highlight',
+              desc: '高亮显示此列',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'type',
+              desc: '列类型(可选值: "", checkbox)',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'nowrap',
+              desc: '控制此列内容不折行, 会计算出最小的宽度',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'v-model',
+              desc: 'type:checkbox时的值, 通过和data中的值做全等比较',
+              type: 'Array',
+              default: '[]'
+            }
+          ],
+          data: [],
+          keyValues: [
+            {
+              key: '注册手机',
+              value: '18300001511'
+            },
+            {
+              key: '客户姓名',
+              value: '叶一'
+            },
+            {
+              key: '身份证号',
+              value: '420502199001010016'
+            }
+          ],
+          checkeds: [
+            data[1],
+            data[2]
+          ]
+        }
+      },
+      mounted () {
+        this.$refs.table.$on('select', (data) => {
+          console.log(data)
+        })
+
+        setTimeout(() => {
+          this.data = data
+          // this.showAge = true
+        }, 1000)
+      },
+      methods: {
+        editHandler (index, data) {
+          console.log(index, data)
+        },
+        deleteHandler (index, data) {
+          console.log(index, data)
+        }
+      }
+    })

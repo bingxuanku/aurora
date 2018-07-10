@@ -1,0 +1,65 @@
+div.au-date-picker(:class="cls")
+  au-input(
+    v-model="datetime",
+    @click.native="clickHandler",
+    :placeholder="placeholder",
+    readonly,
+    :active="inputActive",
+    :icon="icon",
+    @click-icon="clickIconHandler",
+    @mouseover-icon="mouseoverIconHandler"
+    @mouseout-icon="mouseoutIconHandler"
+  )
+  popup(ref="popup")
+    au-year-picker-panel(
+      v-model="model",
+      v-if="type === 'year'",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate"
+    )
+    au-month-picker-panel(
+      v-model="model",
+      v-if="type === 'month'",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate"
+    )
+    au-date-picker-panel(
+      v-model="model",
+      v-if="type === 'date'",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate"
+    )
+    au-date-time-picker-panel(
+      v-model="model",
+      v-if="type === 'datetime'",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate",
+      :format="format"
+    )
+    au-date-picker-range-panel(
+      v-model="model",
+      v-if="type === 'daterange'",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate"
+    )
+    au-time-picker-panel(
+      v-model="model",
+      v-if="type === 'time'",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate",
+      :format="format"
+    )
+    au-date-time-picker-range-panel(
+      v-model="model",
+      v-if="type === 'datetimerange'",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate",
+      :format="format"
+    )

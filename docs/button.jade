@@ -1,0 +1,277 @@
+extends ./_layout
+
+block title
+  |Button
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuButton
+      .docs-desc
+        p|标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑
+
+    .docs-section
+      h2|按钮类型
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-button|默认按钮
+          au-button(type="primary")|主要按钮
+          au-button(type="link")|主要按钮
+      .docs-desc
+        p|基础的按钮用法
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|按钮尺寸
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-button(type="primary", size="large")|大型按钮
+          au-button(type="primary", size="default")|中型按钮
+          au-button(type="primary", size="small")|小型按钮
+          au-button(type="primary", size="mini")|超小按钮
+        .docs-panel-row
+          au-button(type="link", size="large")|大型按钮
+          au-button(type="link", size="default")|中型按钮
+          au-button(type="link", size="small")|小型按钮
+          au-button(type="link", size="mini")|超小按钮
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                active: '1'
+              }
+            }
+          }
+      .docs-desc
+        p|Button 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|不同颜色
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-button(type="primary")|主要按钮
+          au-button(type="info")|信息按钮
+          au-button(type="success")|审核通过
+          au-button(type="danger")|审核拒绝
+          au-button(type="warning")|警告按钮
+          au-button(type="default")|默认按钮
+
+        .docs-panel-row
+          au-button(type="primary", size="large")|主要按钮
+          au-button(type="info", size="large")|信息按钮
+          au-button(type="success", size="large")|审核通过
+          au-button(type="danger", size="large")|审核拒绝
+          au-button(type="warning", size="large")|警告按钮
+          au-button(type="default", size="large")|默认按钮
+
+        .docs-panel-row
+          au-button(type="primary", size="small")|主要按钮
+          au-button(type="info", size="small")|信息按钮
+          au-button(type="success", size="small")|审核通过
+          au-button(type="danger", size="small")|审核拒绝
+          au-button(type="warning", size="small")|警告按钮
+          au-button(type="default", size="small")|默认按钮
+
+        .docs-panel-row
+          au-button(type="primary", size="mini")|主要按钮
+          au-button(type="info", size="mini")|信息按钮
+          au-button(type="success", size="mini")|审核通过
+          au-button(type="danger", size="mini")|审核拒绝
+          au-button(type="warning", size="mini")|警告按钮
+          au-button(type="default", size="mini")|默认按钮
+
+      .docs-desc
+        p|不同的颜色倾向代表不同的提示
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|不可用状态
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-button(type="primary", disabled)|添加
+          au-button(disabled)|添加
+      .docs-desc
+        p|按钮不可用状态
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|加载中
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-button(:loading="true")|加载中
+      .docs-desc
+        p|按钮加载中状态
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|图标按钮
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-button(icon="plus")|添加
+          au-button(icon="search")|添加
+          au-button(icon="battery-three-quarters")
+            |添加
+            au-icon(icon="battery-three-quarters")
+          au-button(type="primary", icon="plus")|添加
+
+        .docs-panel-row
+          au-button(icon="plus")
+          au-button(icon="search")
+
+        .docs-panel-row
+          au-button(type="primary", icon="plus")
+          au-button(type="primary", icon="search")
+      .docs-desc
+        p|带图标的按钮可增强辨识度(有文字)或节省空间(无文字)
+      .docs-panel
+        .docs-panel-content
+
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|按钮组
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-flex(wrap)
+            au-item(span="6")
+              au-button-group
+                au-button(type="primary", icon="plus")
+                au-button(type="primary", icon="remove")
+
+            au-item(span="6")
+              au-button-group
+                au-button(type="primary")|按钮1
+                au-button(type="primary")|按钮2
+                au-button(type="primary")|按钮3
+
+            au-item(span="6")
+              au-button-group
+                au-button(:type="active == 1 ? 'primary' : 'default'", @click="clickActive(1)")|按钮1
+                au-button(:type="active == 2 ? 'primary' : 'default'", @click="clickActive(2)")|按钮2
+                au-button(:type="active == 3 ? 'primary' : 'default'", @click="clickActive(3)")|按钮3
+
+            au-item(span="6")
+              au-button-group
+                au-button(type="primary")|添加
+                au-button(type="danger")|删除
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                active: '2'
+              }
+            },
+            methods: {
+              clickActive (value) {
+                this.active = value
+              }
+            }
+          }
+      .docs-desc
+        p|以按钮组的方式出现，常用于多项类似操作
+      .docs-panel
+        .docs-panel-content
+
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|属性
+      au-table#table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [
+            {
+              name: 'type',
+              desc: '按钮的样式 (可选值: primary, info, success, warning, danger, default, link)',
+              type: 'String',
+              default: 'default'
+            },
+            {
+              name: 'size',
+              desc: '按钮的大小 (可选值: large, default, small, mini)',
+              type: 'String',
+              default: 'default'
+            },
+            {
+              name: 'icon',
+              desc: '文字前显示的icon',
+              type: 'String',
+              default: 'null'
+            },
+            {
+              name: 'href',
+              desc: '按钮是否是一个链接',
+              type: 'String',
+              default: 'null'
+            },
+            {
+              name: 'target',
+              desc: '如果提供了href, 可指定链接的target',
+              type: 'String',
+              default: 'null'
+            },
+            {
+              name: 'loading',
+              desc: '是否显示加载中',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'disabled',
+              desc: '是否禁用按钮',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'native-type',
+              desc: '原生type属性',
+              type: 'String',
+              default: 'button'
+            },
+            {
+              name: 'autofocus',
+              desc: '是否自动聚焦',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'block',
+              desc: '是否显示块化按钮',
+              type: 'Boolean',
+              default: 'false'
+            }
+          ]
+        }
+      }
+    })

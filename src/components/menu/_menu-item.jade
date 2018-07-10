@@ -1,0 +1,16 @@
+.au-menu-item(:class="cls", :data-href="href", :data-target="target")
+  .au-menu-item-title(
+    ref="title"
+  )
+    .au-menu-item-icon
+      au-icon(:icon="icon", v-if="icon")
+    .au-menu-item-text
+      slot
+    .au-menu-item-arrow(v-if="subMenu != null")
+      au-icon(icon="chevron-down")
+
+  .au-menu-item-content(
+    ref="content",
+    :style="contentStyle",
+    v-if="subMenu != null"
+  )

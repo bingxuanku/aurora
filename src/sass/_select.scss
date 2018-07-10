@@ -1,0 +1,200 @@
+.au-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid $color-border;
+  user-select: none;
+  transition: all $transition-during;
+  vertical-align: middle;
+  position: relative;
+  width: 100%;
+  background-color: $color-white;
+
+  .au-select-right-icon {
+    @include flex-center-center();
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 10px;
+
+    .au-icon {
+      color: $color-border;
+      transition: all $transition-during;
+    }
+
+    .au-icon-close {
+      display: none;
+    }
+  }
+
+  &.au-select-clearable:hover {
+    .au-select-right-icon {
+      .au-icon-caret-down {
+        display: none;
+      }
+      .au-icon-close {
+        display: block;
+        positoin: relative;
+
+        &:hover {
+          color: $color-silver-light !important;
+        }
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: -5px;
+          left: -5px;
+          right: -5px;
+          bottom: -5px;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    border-color: $color-border-hover;
+    .au-select-right-icon .au-icon {
+      color: $color-border-hover;
+    }
+  }
+
+  &.active {
+    border-color: $color-primary;
+    .au-select-right-icon .au-icon-caret-down {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.disabled {
+    border-color:  $color-gray-light-extra;
+    background-color: $color-white-dark;
+    color: $color-gray;
+    cursor: not-allowed;
+    .fa-caret-down {
+      color: $color-border;
+    }
+    .au-select-item {
+      background-color: $color-gray;
+      color: $color-white;
+      border-color: $color-gray;
+    }
+  }
+
+  .au-icon-caret-down {
+    font-size: 18px;
+  }
+
+  &.au-select-placeholder {
+    .au-select-text {
+      opacity: 1;
+      color: $color-silver-light-extra;
+    }
+  }
+}
+
+
+.au-select-content {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 20px;
+  flex: 1;
+}
+
+.au-select-text {
+  margin-right: 20px;
+  @include text-overflowing();
+}
+
+
+.au-select-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.au-select-item {
+  color: #4777e6;
+  background-color: #ecf1fd;
+  border: 1px solid #a3bbf2;
+  height: 24px;
+  line-height: 22px;
+  padding: 0 8px;
+  font-size: $fontsize-small;
+  margin: 5px 10px 5px 0;
+
+  .au-icon {
+    margin-left: 8px;
+    font-size: $fontsize-small !important;
+    position: relative;
+    &:after {
+      display: block;
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+    }
+  }
+}
+
+
+.au-select-large {
+  min-height: $select-large-height;
+  padding: $select-large-padding-y $select-large-padding-x;
+  font-size: $select-large-fontsize;
+  &, .au-icon-caret-down {
+    line-height: $select-large-height - ($select-large-padding-y * 2) - 2;
+  }
+}
+
+.au-select-default {
+  min-height: $select-default-height;
+  padding: $select-default-padding-y $select-default-padding-x;
+  font-size: $select-default-fontsize;
+  &, .au-icon-caret-down {
+    line-height: $select-default-height - ($select-default-padding-y * 2) - 2;
+  }
+}
+
+.au-select-small {
+  min-height: $select-small-height;
+  padding: $select-small-padding-y $select-small-padding-x;
+  font-size: $select-small-fontsize;
+  &, .au-icon-caret-down {
+    line-height: $select-small-height - ($select-small-padding-y * 2) - 2;
+  }
+}
+
+.au-select-mini {
+  min-height: $select-mini-height;
+  padding: $select-mini-padding-y $select-mini-padding-x;
+  font-size: $select-mini-fontsize;
+  &, .au-icon-caret-down {
+    line-height: $select-mini-height - ($select-mini-padding-y * 2) - 2;
+  }
+}
+
+.au-select-input {
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.au-select.disabled .au-select-input {
+  cursor: not-allowed;
+}
+
+.au-select-text-hidden {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
+}

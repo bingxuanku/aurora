@@ -1,0 +1,13 @@
+transition(
+  name="popup-fade"
+)
+  .au-popup(
+    :class="classObject",
+    v-show="isShow",
+    :style="style",
+    @click="clickHandler"
+  )
+    .au-popup-inner
+      .au-popup-arrow(v-if="showArrow")
+      .au-popup-content
+        slot

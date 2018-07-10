@@ -1,0 +1,50 @@
+.au-input(:class="inputClass")
+  input.au-input-control(
+    v-if="type === 'text'",
+    :class="controlClass",
+    :style="style",
+    type="text",
+    :placeholder="placeholder",
+    @blur="onBlur",
+    @focus="onFocus",
+    v-model="model",
+    :readonly="readonly",
+    :disabled="disabled",
+    :maxlength="maxlength"
+  )
+  input.au-input-control(
+    v-if="type === 'password'",
+    :class="controlClass",
+    :style="style",
+    type="password",
+    :placeholder="placeholder",
+    @blur="onBlur",
+    @focus="onFocus",
+    v-model="model",
+    :readonly="readonly",
+    :disabled="disabled",
+    :maxlength="maxlength"
+  )
+  textarea.au-input-control(
+    v-if="type === 'textarea'",
+    :class="controlClass",
+    :style="style",
+    :placeholder="placeholder",
+    @blur="onBlur",
+    @focus="onFocus",
+    v-model="model",
+    :readonly="readonly",
+    :disabled="disabled",
+    :rows="rows",
+    :cols="cols",
+    :maxlength="maxlength"
+  )
+  .au-input-icon(
+    v-if="icon",
+    @click="onClickIcon",
+    @mouseover="onMouseOverIcon",
+    @mouseout="onMouseOutIcon"
+  )
+    au-icon(
+      :icon="icon"
+    )

@@ -1,0 +1,60 @@
+@mixin text-overflowing() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin flex-center-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin expand-link() {
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+
+@mixin fullscreen() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin link-extend($width:10px) {
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -$width;
+    left: -$width;
+    right: -$width;
+    bottom: -$width;
+  }
+}
+
+@mixin clear() {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+}

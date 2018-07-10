@@ -1,0 +1,79 @@
+extends ./_layout
+
+block title
+  |Test
+
+block content
+  au-panel(title="内容")
+    au-form(inline, label-position="top")
+      au-flex
+        au-item
+          au-form-group(label="姓名")
+            au-input(v-model="form.name", placeholder="请输入姓名")
+          au-form-group(label="密码")
+            au-input(type="password", v-model="form.password", placeholder="请输入密码")
+          au-form-group(label="年龄")
+            au-select(v-model="form.age", :options="[{label:'28',value:'28'}]", placeholder="请选择年龄", clearable)
+          au-form-group(label="日期")
+            au-date-picker(v-model="form.datetimerange", type="datetimerange", clearable, placeholder="请选择时间")
+      au-flex
+        au-item
+          au-form-group(label="日期")
+            au-date-picker(v-model="form.datetimerange", type="daterange", clearable, placeholder="请选择时间")
+          au-form-group(label="日期")
+            au-date-picker(v-model="form.date", type="month", clearable, placeholder="请选择时间")
+          au-form-group
+            au-button(native-type='submit', type="primary")|搜索
+
+    au-table(:data="data", style="margin-top: 20px;")
+      au-table-column(
+        label='姓名',
+        attr-name="name"
+      )
+      au-table-column(
+        label='年龄',
+        attr-name="age",
+        v-if="showAge"
+      )
+
+      au-table-column(
+        label='操作',
+        nowrap
+      )
+        template(scope="scope")
+          au-button(type="primary", size="mini", @click.native="console.log(scope.index, scope.data)")|编辑
+          au-button(type="danger", size="mini", @click.native="console.log(scope.index, scope.data)")|删除
+
+    au-pagination(v-model="page", :item-count="itemCount", align="right")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          form: {
+            name: '',
+            password: '',
+            age: '',
+            date: '',
+            datetimerange: ['', '']
+          },
+          page: 1,
+          itemCount: 300,
+          showAge: false,
+          data: [
+            { id: 1, name: 'kevin', age: '28' },
+            { id: 2, name: 'kevin', age: '27' },
+            { id: 3, name: 'kevin', age: '26' },
+            { id: 4, name: 'kevin', age: '25' }
+          ]
+        }
+      },
+      created () {
+        setTimeout(() => {
+          this.showAge = true
+        }, 2000)
+      }
+    })

@@ -1,0 +1,75 @@
+doctype html
+html
+    head
+        title Aurora Design
+        meta(charset="utf-8")
+        link(href="index.css" rel="stylesheet")
+        //- link(href="src/sass/main.css" rel="stylesheet")
+        link(href="lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet")
+        script(src="lib/vue.dev.js")
+        script(src="src/aurora.js")
+        script.
+            Vue.component('au-test', {
+                render: function (h){
+                    var $node = h('div', {}, [])
+                    console.log($node)
+                    $node.children.push(h('span'))
+
+                    return $node
+                }
+            })
+    body
+        div#app(v-cloak)
+            div(style="padding: 10px; width: 600px;")
+
+                au-test()
+
+                au-transfer(v-model="checkeds", :data="transferData", :left-default-checkeds="leftCheckeds", :right-default-checkeds="rightCheckeds",
+                data-key="id",
+                :render-func="renderFunc",
+                :button-texts="buttonTexts",
+                @change="onchange",
+                filterable,
+                :filter-func="filterFunc",
+                filter-placeholder="搜索一下"
+                ref="demo")
+                div| -----------
+                {{JSON.stringify(checkeds)}}
+                //- {{JSON.stringify(transferData)}}
+        
+        script.
+            const cities = ['上海', '北京', '广州', '深圳', '南京', '西安', '成都'];
+            const pinyin = ['shanghai', 'beijing', 'guangzhou', 'shenzhen', 'nanjing', 'xian', 'chengdu'];
+
+            var datas = []
+            cities.forEach((city, index) => {
+                datas.push({
+                    label: city,
+                    id: index,
+                    pinyin: pinyin[index],
+                    disabled: index == 2
+                })
+            })
+
+            vm = new Vue({
+                el: "#app",
+                data: {
+                    transferData: datas,
+                    checkeds: [0],
+                    leftCheckeds: [],
+                    rightCheckeds: [],
+                    titles: ['源','目标'],
+                    buttonTexts: ['左边边', '右边边']
+                },
+                methods: {
+                    renderFunc: function (data){
+                        return `${data.id}-${data.label}----`
+                    },
+                    onchange: function (checkeds, dir, moveKeys){
+                        console.log(checkeds, dir, moveKeys)
+                    },
+                    filterFunc: function (query, data){
+                        return data.pinyin.indexOf(query) > -1 || data.label.indexOf(query) > -1
+                    }
+                }
+            })

@@ -1,0 +1,5 @@
+.au-steps(:class="cls")
+  .au-steps-content
+    slot
+  .au-steps-lines(v-if="lines.length > 0")
+    .au-steps-line(v-for="line in lines", :class="line.class", :style="line.style")

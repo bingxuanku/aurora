@@ -1,0 +1,29 @@
+.au-flex {
+  width: 100%;
+}
+
+.au-flex-inner {
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  overflow: inherit;
+}
+
+@for $i from 1 through 24 {
+  .au-item-span-#{$i} {
+    width: 100% / (24 / $i);
+  }
+
+  .au-item-offset-#{$i} {
+    margin-left: 100% / (24 / $i);
+  }
+}
+
+
+.au-flex-inline {
+  width: auto;
+  display: inline-block;
+  .au-flex-inner {
+    display: inline-flex;
+  }
+}

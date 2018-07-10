@@ -1,0 +1,9 @@
+.au-step(:class="cls")
+  .au-step-icon(ref="icon")
+    .au-step-dot(v-if="dot")
+    template(v-else)
+      au-icon(:icon="icon", v-if="icon")
+      .au-step-index(v-else)|{{ number }}
+
+  .au-step-title(v-if="title")|{{ title }}
+  .au-step-desc(v-if="desc")|{{ desc }}

@@ -1,0 +1,10 @@
+.au-time-picker-selector(@mousewheel="scrollHandler")
+  -{{style}}-
+  .au-time-picker-selector-inner(:style="styleObject")
+    .au-time-picker-item(
+      v-for="item in range",
+      @click="clickHandler(item)",
+      :class="{ 'active': value == item.label, 'au-disabled': item.isDisabled }",
+      :data-value="item.label"
+    )
+      |{{ item.label }}

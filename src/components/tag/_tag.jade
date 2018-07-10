@@ -1,0 +1,6 @@
+.au-tag(:class="cls")
+  .au-tag-content
+    slot
+
+  .au-tag-icon(v-if="closeable")
+    au-icon(icon="close", @click.native="onClick")

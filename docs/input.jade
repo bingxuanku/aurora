@@ -1,0 +1,204 @@
+extends ./_layout
+
+block title
+  |Input
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuInput
+      .docs-desc
+
+    .docs-section
+      h2|Text
+      .docs-desc
+
+      template.html(scoped="scoped")
+        au-flex(column)
+          au-item(span="12")
+            .docs-panel-row
+              au-input(
+                v-model="form.value",
+                placeholder="请输入名称",
+                @focus="onFocus",
+                @blur="onBlur"
+              )
+          au-item(span="12")
+            .docs-panel-row
+              au-input(
+                disabled,
+                v-model="form.value",
+                placeholder="请输入名称",
+                @focus="onFocus",
+                @blur="onBlur"
+              )
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|多种大小
+      .docs-desc
+
+      template.html(scoped="scoped")
+        au-flex(column)
+          au-item(span="12")
+            .docs-panel-row
+              au-input(
+                v-model="form.value",
+                size="large"
+                placeholder="请输入名称",
+                @focus="onFocus",
+                @blur="onBlur"
+              )
+          au-item(span="12")
+            .docs-panel-row
+              au-input(
+                v-model="form.value",
+                size="default",
+                placeholder="请输入名称",
+                @focus="onFocus",
+                @blur="onBlur"
+              )
+          au-item(span="12")
+            .docs-panel-row
+              au-input(
+                v-model="form.value",
+                size="small",
+                placeholder="请输入名称",
+                @focus="onFocus",
+                @blur="onBlur"
+              )
+          au-item(span="12")
+            .docs-panel-row
+              au-input(
+                v-model="form.value",
+                size="mini",
+                placeholder="请输入名称",
+                @focus="onFocus",
+                @blur="onBlur"
+              )
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|Textarea
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-input(
+            type="textarea",
+            v-model="form.value",
+            placeholder="请输入名称",
+            @focus="onFocus",
+            @blur="onBlur",
+            rows="10",
+            cols="100"
+          )
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|图标
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-input(
+            v-model="form.value",
+            placeholder="请输入名称",
+            @focus="onFocus",
+            @blur="onBlur",
+            rows="10",
+            cols="100",
+            icon="close",
+            @click-icon="form.value = ''"
+          )
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+
+    .docs-section
+      h2|属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [
+            {
+              name: 'type',
+              desc: '选择使用text或textarea',
+              type: 'String',
+              default: 'text'
+            },
+            {
+              name: 'placeholder',
+              desc: '占位符',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'v-model',
+              desc: '绑定的内容',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'rows',
+              desc: '同原生的textarea rows',
+              type: 'String, Number',
+              default: '""'
+            },
+            {
+              name: 'cols',
+              desc: '同原生的textarea cols',
+              type: 'String, Number',
+              default: '""'
+            },
+            {
+              name: 'readonly',
+              desc: '是否只读',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'disabled',
+              desc: '是否禁用',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'size',
+              desc: '组件的大小 (可选值: large, default, small, mini)',
+              type: 'String',
+              default: 'default'
+            }
+          ],
+          form: {
+            value: 'hello world'
+          }
+        }
+      },
+      methods: {
+        onFocus ($event) {
+
+        },
+        onBlur ($event) {
+
+        }
+      }
+    })

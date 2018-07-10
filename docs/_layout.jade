@@ -1,0 +1,269 @@
+doctype
+html.no-js
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title
+      block title
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href="../lib/font-awesome-4.7.0/css/font-awesome.min.css")
+    //- link(rel='stylesheet', href="../src/sass/aurora.css")
+    
+    script(src="http://s1.mljr.com/aurora-official/static/lib/vue.js")
+    script(src="../src/aurora.js")
+
+    link(rel='stylesheet', href="./docs.css")
+    link(rel='stylesheet', href="../lib/highlight.github.min.css")
+    script(src="../lib/highlight.min.js")
+    script(src="../lib/beautify.min.js")
+    script(src="../lib/beautify-css.min.js")
+    script(src="../lib/beautify-html.min.js")
+    style.
+      .browsehappy {
+        height: 40px;
+        line-height: 40px;
+        background-color: #f5ffbd;
+        color: #333;
+        text-align: center;
+        font-size: 12px;
+      }
+  body
+    <!--[if lt IE 8]>
+    p.browsehappy
+      | 您正在使用 <strong>过时</strong> 的浏览器.
+      | 请 <a href="http://browsehappy.com/">更新您的浏览器</a>
+      | 来使用此项目
+    <![endif]-->
+    au-app#app(v-cloak)
+      au-header
+        h1(slot="logo")
+          |Aurora
+          span.version|v0.1
+
+        au-menu(slot="content-left", menu-trigger="click", :selected="selected")
+          au-menu-item(href="grid.html", value="grid")|Grid
+          au-menu-item(href="flex.html", value="flex")|Flex
+          au-menu-item(href="button.html", value="button")|Button
+
+          au-menu-item|表单
+            au-menu
+              au-menu-item(href="input.html", value="input")|Input
+              au-menu-item(href="select.html", value="select")|Select
+              au-menu-item(href="checkbox.html", value="checkbox")|Checkbox
+              au-menu-item(href="radio.html", value="radio")|Radio
+              au-menu-item(href="form.html", value="form")|Form
+              au-menu-item(href="date-picker.html", value="date-picker")|DatePicker
+              au-menu-item(href="upload.html", value="upload")|Upload
+
+          au-menu-item|区块
+            au-menu
+              au-menu-item(href="panel.html", value="panel")|Panel
+              au-menu-item(href="table.html", value="table")|Table
+              au-menu-item(href="tabs.html", value="tabs")|Tabs
+              au-menu-item(href="pagination.html", value="pagination")|Pagination
+              au-menu-item(href="dropdown.html", value="dropdown")|Dropdown
+              au-menu-item(href="modal.html", value="modal")|Modal
+              au-menu-item(href="drag-modal.html", value="drag-modal")|DragModal
+              au-menu-item(href="menu.html", value="menu")|Menu
+              au-menu-item(href="tag.html", value="tag")|Tag
+              au-menu-item(href="tree.html", value="tree")|tree
+
+          au-menu-item|消息
+            au-menu
+              au-menu-item(href="message.html", value="message")|Message
+              au-menu-item(href="tooltip.html", value="tooltip")|Tooltip
+              au-menu-item(href="pop-confirm.html", value="pop-confirm")|PopConfirm
+
+        div(slot="content-right")
+          au-menu
+            au-menu-item
+              img(src="http://img05.tooopen.com/images/20150202/sy_80219211654.jpg", style="width:40px;height:40px;border-radius:40px;margin-right:10px;border:1px solid #ccc;")
+              |Kevin
+              au-menu
+                au-menu-item|我的信息
+                au-menu-item|退出
+
+      au-content
+        div(slot="sidebar")
+          au-menu-group(title="基础")
+            au-menu(:selected="selected")
+              au-menu-item(href="install.html", value="install")|安装
+              au-menu-item(href="grid.html", value="grid")|Grid
+              au-menu-item(href="flex.html", value="flex")|Flex
+              au-menu-item(href="button.html", value="button")|Button
+
+          au-menu-group(title="表单")
+            au-menu(:selected="selected")
+              au-menu-item(href="input.html", value="input")|Input
+              au-menu-item(href="select.html", value="select")|Select
+              au-menu-item(href="checkbox.html", value="checkbox")|Checkbox
+              au-menu-item(href="radio.html", value="radio")|Radio
+              au-menu-item(href="form.html", value="form")|Form
+              au-menu-item(href="date-picker.html", value="date-picker")|DatePicker
+              au-menu-item(href="upload.html", value="upload")|Upload
+
+          au-menu-group(title="其他")
+            au-menu(:selected="selected")
+              au-menu-item(icon="clone")|区块
+                au-menu
+                  au-menu-item(href="panel.html", value="panel")|Panel
+                  au-menu-item(href="table.html", value="table")|Table
+                  au-menu-item(href="tabs.html", value="tabs")|Tabs
+                  au-menu-item(href="pagination.html", value="pagination")|Pagination
+                  au-menu-item(href="dropdown.html", value="dropdown")|Dropdown
+                  au-menu-item(href="modal.html", value="modal")|Modal
+                  au-menu-item(href="drag-modal.html", value="drag-modal")|DragModal
+                  au-menu-item(href="menu.html", value="menu")|Menu
+                  au-menu-item(href="tag.html", value="tag")|Tag
+                  au-menu-item(href="tree.html", value="tree")|tree
+
+              au-menu-item(icon="sticky-note")|消息
+                au-menu
+                  au-menu-item(href="message.html", value="message")|Message
+                  au-menu-item(href="tooltip.html", value="tooltip")|Tooltip
+                  au-menu-item(href="pop-confirm.html", value="pop-confirm")|PopConfirm
+
+        div(slot="container")
+          block content
+          au-footer
+            |Copyright © 2017 美利金融 Aurora项目
+
+    //- script(src="../lib/vue.js")
+    script.
+      const mixins = []
+      !function () {
+        // Vue.config.silent = true
+
+        const sections = document.querySelectorAll('.docs-section')
+        ;[].forEach.call(sections, (section) => {
+          loadHtml(section)
+          loadJs(section)
+        })
+
+        function loadHtml (section) {
+          const template = section.querySelector('template.html')
+          if (!template) {
+            return
+          }
+          const code = section.querySelector('.docs-code docs-code.html')
+          if (!code) {
+            return
+          }
+          section.querySelector('.docs-panel-content').innerHTML = template.innerHTML
+          code.setAttribute('html', convert(template.innerHTML))
+
+          template.parentElement.removeChild(template)
+
+          function convert(html) {
+            html = html.trim()
+
+            html = html_beautify(html, {
+              indent_size: 2
+            })
+            html = html.replace(/=""/g, '')
+            return htmlEncode(html)
+          }
+        }
+
+        function loadJs (section) {
+          const template = section.querySelector('template.js')
+          if (!template) {
+            return
+          }
+          const code = section.querySelector('.docs-code docs-code.js')
+          if (!code) {
+            return
+          }
+          const html = template.innerHTML
+          const js = convert(html)
+
+          code.setAttribute('html', 'export default ' + htmlEncode(js))
+          template.parentElement.removeChild(template)
+
+          var result
+          eval(`result = ${js}`)
+          mixins.push(result)
+
+          function convert (js) {
+            const div = document.createElement('div')
+            div.innerHTML = js
+            js = div.textContent.trim()
+            js = js_beautify(js, {
+              indent_size: 2
+            })
+            return js
+          }
+        }
+
+        function htmlEncode (str) {
+          var s = "";
+          if (str.length == 0) return "";
+          s = str.replace(/&/g, "&gt;");
+          s = s.replace(/</g, "&lt;");
+          s = s.replace(/>/g, "&gt;");
+          s = s.replace(/ /g, "&nbsp;");
+          s = s.replace(/\'/g, "&#39;");
+          s = s.replace(/\"/g, "&quot;");
+          s = s.replace(/\n/g, "<br>");
+          return s;
+        }
+
+        Vue.component('docs-code', {
+          template: '<pre><code v-html="html"></code></pre>',
+          props: {
+            html: String
+          },
+          mounted () {
+            hljs.highlightBlock(this.$el.querySelector('code'))
+          }
+        })
+
+        mixins.push({
+          data () {
+            return {
+              selected: [],
+              columns: [
+                {
+                  label: '参数',
+                  attrName: 'name'
+                },
+                {
+                  label: '说明',
+                  attrName: 'desc'
+                },
+                {
+                  label: '类型',
+                  attrName: 'type'
+                },
+                {
+                  label: '默认值',
+                  attrName: 'default'
+                }
+              ],
+              eventColumns: [
+                {
+                  label: '名称',
+                  attrName: 'name'
+                },
+                {
+                  label: '说明',
+                  attrName: 'desc'
+                },
+                {
+                  label: '回调函数参数',
+                  attrName: 'args'
+                }
+              ]
+            }
+          },
+          created () {
+            const match = window.location.href.match(/\/([-\w]+)\.html/)
+            if (match) {
+              this.selected.push(match[1])
+            }
+          }
+        })
+      }()
+
+    block script

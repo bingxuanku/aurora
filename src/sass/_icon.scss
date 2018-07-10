@@ -1,0 +1,44 @@
+@keyframes circle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.au-icon-default {
+  // font-size: $icon-fontsize-default;
+}
+
+.au-icon-large {
+  font-size: $icon-fontsize-large;
+}
+
+.au-icon-small {
+  font-size: $icon-fontsize-small;
+}
+
+.au-icon-rotate {
+  animation: circle 1.5s infinite linear;
+}
+
+.au-icon-primary {
+  color: $color-primary;
+}
+
+.au-icon-info {
+  color: $color-info;
+}
+
+.au-icon-success {
+  color: $color-success;
+}
+
+.au-icon-warning {
+  color: $color-warning;
+}
+
+.au-icon-danger {
+  color: $color-danger;
+}

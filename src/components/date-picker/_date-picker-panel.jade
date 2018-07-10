@@ -1,0 +1,28 @@
+.au-date-picker-panel
+  au-year-picker-content(
+    v-model="value",
+    ref="yearContent",
+    v-show="type == 'year'",
+    :startDate="startDate",
+    :endDate="endDate",
+    :disabledDate="disabledDate"
+  )
+  au-month-picker-content(
+    v-model="value",
+    ref="monthContent",
+    v-show="type == 'month'",
+    :startDate="startDate",
+    :endDate="endDate",
+    :disabledDate="disabledDate"
+  )
+  au-date-picker-content(
+    v-model="value",
+    ref="dateContent",
+    v-show="type == 'date'",
+    :range="range",
+    :leftRange="leftRange",
+    :rightRange="rightRange",
+    :startDate="startDate",
+    :endDate="endDate",
+    :disabledDate="disabledDate"
+  )

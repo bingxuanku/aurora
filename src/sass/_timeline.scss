@@ -1,0 +1,74 @@
+.au-timeline{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .au-timeline-item{
+    position: relative;
+    padding: 0 0 12px;
+    list-style: none;
+    margin: 0;
+
+    .au-timeline-item-tail{
+      position: absolute;
+      left: 6px;
+      top: 0;
+      height: 100%;
+      border-left: 2px solid $color-white-dark;
+    }
+    .au-timeline-item-head{
+      position: absolute;
+      width: $fontsize-default;
+      height: $fontsize-default;
+      background-color: $color-white;
+      border-radius: 100px;
+      border: 2px solid transparent;
+    }
+    .au-timeline-item-head-custom{
+      border: 0;
+    }
+    .au-timeline-item-content{
+      padding: 0 0 10px 24px;
+      font-size: $fontsize-default;
+      position: relative;
+      top: -1px;
+    }
+
+    .au-timeline-item-head-blue{
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+    .au-timeline-item-head-green{
+      border-color: $color-success;
+      color: $color-success;
+    }
+    .au-timeline-item-head-red{
+      border-color: $color-danger;
+      color: $color-danger;
+    }
+  }
+
+  .au-timeline-item-last{
+    .au-timeline-item-tail{
+      border-left-style: dotted;
+      display: none;
+    }
+    .au-timeline-item-content{
+      min-height: 48px;
+    }
+  }
+
+  .au-timeline-item-pending{
+    .au-timeline-item-tail{
+      display: none;
+    }
+  }
+}
+
+.au-timeline-pending{
+  .au-timeline-item-last{
+    .au-timeline-item-tail{
+      display: block;
+    }
+  }
+}

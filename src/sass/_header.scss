@@ -1,0 +1,38 @@
+.au-header {
+  height: 60px;
+  background-color: $color-white;
+  position: relative;
+  z-index: $zindex-layout;
+  display: flex;
+}
+
+.au-header-logo {
+  width: 200px;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 20px;
+  font-size: $fontsize-large-extra;
+  color: $color-black-light-extra;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.au-header-content {
+  flex: 1;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  padding: 0 20px;
+
+  .au-header-content-left {
+    flex: 1;
+  }
+}
+
+.au-app-has-sidebar {
+  .au-header-logo {
+    background-color: $color-black-light;
+    color: $color-white;
+  }
+}

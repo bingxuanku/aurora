@@ -1,0 +1,46 @@
+div.au-select(
+  @click="clickHandler",
+  :class="classObj"
+)
+  .au-select-content
+    .au-select-text(v-if="text && !filter")
+      |{{ text }}
+
+    div.au-select-item(
+      v-if="multiple",
+      v-for="s in selected"
+    )
+      |{{ s.label }}
+      au-icon(icon="close", @click.native="removeValueHandler($event, s.value)")
+
+    input.au-select-input(
+      v-model="textModel",
+      type="text",
+      ref="text",
+      v-if="showInput",
+      @focus="textFocusHandler",
+      @keydown="keyDownHandler",
+      @keyup="keyUpHandler",
+      @click="$event.stopPropagation()",
+      :placeholder="(selected.length === 0 || !multiple) ? placeholder : ''",
+      :readonly='!active',
+      :disabled="disabled"
+    )
+  .au-select-right-icon(
+  )
+    au-icon(icon="caret-down")
+    au-icon(icon="close", @click.native="clearValueHandler")
+
+  popup(
+    ref="popup"
+  )
+    .au-options(ref="options")
+      au-option(
+        v-if="options != null",
+        v-for="option in options",
+        key="option.value",
+        :label="option.label",
+        :value="option.value"
+      )
+      slot(v-if="options == null")
+      div.au-option-empty(v-if="_isMounted && getOptionInstances(true).length === 0")|无数据

@@ -1,0 +1,56 @@
+.au-pagination(:class="classObj")
+  .au-pagination-item(v-if="showTotal")
+    .au-pagination-text
+      |共 {{ itemCount }} 条
+  .au-pagination-item
+    .au-pagination-link(
+      :class="{'au-pagination-disabled': isLeftOut(page) }",
+      @click="prevPage"
+    )
+      au-icon(icon="angle-left")
+      |上一页
+
+    .au-pagination-link(
+      :class="{'au-pagination-disabled': isLeftOut(page) }",
+      @click="goPage(1)",
+      v-if="isShowStartPage"
+    )|1
+
+    .au-pagination-link-dot(v-if="isShowStartArrow", @click="prevFive")
+      au-icon.au-ellipsis(icon="ellipsis-h")
+      au-icon.au-angle(icon="angle-double-left")
+
+    .au-pagination-link(
+      :class="{'active': number === page}"
+      v-for="number in numbers",
+      @click="goPage(number)"
+    )
+      |{{ number }}
+
+    .au-pagination-link-dot(v-if="isShowEndArrow", @click="nextFive")
+      au-icon.au-ellipsis(icon="ellipsis-h")
+      au-icon.au-angle(icon="angle-double-right")
+
+    .au-pagination-link(
+      :class="{'au-pagination-disabled': isRightOut(page) }",
+      @click="goPage(pageCount)",
+      v-if="isShowEndPage"
+    )|{{ pageCount }}
+
+    .au-pagination-link(
+      :class="{'au-pagination-disabled': isRightOut(page) }",
+      @click="nextPage"
+    )
+      |下一页
+      au-icon(icon="angle-right")
+
+  .au-pagination-item
+    .au-pagination-text
+      |第
+      .au-pagination-input-wrapper(v-if="showPageControl")
+        au-input(size="small", v-model="displayPage", @keyup.enter.native="changePage", @blur="blurPage")
+      div(v-else)
+        |{{ displayPage }}
+      |页 / 共{{ pageCount }}页
+  .au-pagination-item(v-if="showPageSizeControl")
+    au-select(v-model="selfPageSize", :options="pageSizeSelectOptions", size="small")

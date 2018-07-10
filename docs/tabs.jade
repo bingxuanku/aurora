@@ -1,0 +1,123 @@
+extends ./_layout
+
+block title
+  |Tabs
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuTabs
+      .docs-desc
+
+    .docs-section
+      h2
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-tabs(v-model="value", @tab-click="onClickTab")
+            au-tab-panel(:tab="tab.name", :value="tab.value", :disabled="tab.disabled" v-for="tab in tabs")
+              |{{tab.name}}
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                value: '1',
+                tabs: [
+                  {
+                    name: '北京',
+                    value: '1'
+                  },
+                  {
+                    name: '上海',
+                    value: '2'
+                  },
+                  {
+                    name: '广州',
+                    value: '3',
+                    disabled: true
+                  }
+                ]
+              }
+            },
+            mounted () {
+              //- setTimeout(() => {
+              //-   this.tabs = [
+              //-     {
+              //-       name: '北京',
+              //-       value: '1'
+              //-     },
+              //-     {
+              //-       name: '上海',
+              //-       value: '2'
+              //-     }
+              //-   ]
+              //- }, 0)
+              setTimeout(() => {
+                  this.value = '2'
+                }, 1000)
+            },
+            methods: {
+              onClickTab (tab) {
+                console.log(tab)
+              }
+            }
+          }
+
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+          docs-code.js
+
+    .docs-section
+      h2|AuTabs属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+    .docs-section
+      h2|AuTabPanel属性
+      au-table(:data="panelAttrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [
+            {
+              name: 'v-model',
+              desc: '显示某个tab的值',
+              type: 'String, Number',
+              default: ''
+            }
+          ],
+          panelAttrs: [
+            {
+              name: 'value',
+              desc: 'tab的值',
+              type: 'String, Number',
+              default: ''
+            },
+            {
+              name: 'tab',
+              desc: 'tab的名称',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'badge',
+              desc: '显示的badge',
+              type: 'String, Number',
+              default: ''
+            }
+          ]
+        }
+      }
+    })

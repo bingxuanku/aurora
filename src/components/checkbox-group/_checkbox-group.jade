@@ -1,0 +1,8 @@
+.au-checkbox-group
+  template(v-for="o in options")
+    au-checkbox(
+      :label="o.label",
+      :value="o.value",
+      v-model="model"
+    )
+    |&nbsp;

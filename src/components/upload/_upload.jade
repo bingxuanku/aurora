@@ -1,0 +1,11 @@
+.au-upload
+  input(
+    type="file",
+    ref="file",
+    :accept="accept",
+    @change="fileChangeHandler"
+  )
+  .au-upload-inner
+    au-button(type="primary", :size="buttonSize", @click="buttonClickHandler", :icon="buttonIcon")|{{ buttonText }}
+    .au-upload-file-name(v-if="fileName")
+      |{{ fileName }}

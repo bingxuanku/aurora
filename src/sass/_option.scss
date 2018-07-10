@@ -1,0 +1,60 @@
+.au-options {
+  padding: 6px 0;
+  background-color: $color-white;
+  max-height: (36px * 6) + (6px * 2);
+  overflow-y: auto;
+}
+
+.au-option {
+  padding: 10px;
+  height: 36px;
+  line-height: 16px;
+  background-color: $color-white;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: $fontsize-default;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include text-overflowing();
+  .au-icon {
+    display: none;
+  }
+
+  &.au-focus {
+    background-color: $color-white-dark;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.active {
+    background-color: $color-primary;
+    color: $color-white;
+    &.au-focus {
+      background-color: lighten($color-primary, 10%);
+    }
+  }
+}
+
+.au-option-empty {
+  color: $color-silver-light;
+  font-size: 13px;
+  text-align: center;
+  padding: 5px;
+}
+
+.au-option-multiple {
+  &.active {
+    background-color: $color-white;
+    color: $color-primary;
+    &.au-focus {
+      background-color: $color-white-dark;
+    }
+    .au-icon {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,214 @@
+extends ./_layout
+
+block title
+  |Flex
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuFlex (不建议使用, 请使用au-row)
+      .docs-desc
+
+    .docs-section
+      h2|水平居中
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-flex(gutter="10", disabled)
+            au-item
+              .flex-item|hello world
+            au-item(flex)
+              .flex-item|hello world
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|垂直模式
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-flex(column, gutter="10", align-items="flex-start")
+            au-item
+              .flex-item|hello world
+            au-item
+              .flex-item|hello world
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|栅格
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-flex(justify-content="flex-start", wrap, gutter="10")
+            au-item(v-for="item in list", span="4")
+              .flex-item|{{ item }}
+
+          au-flex(justify-content="flex-start", wrap, gutter="10")
+            au-item(span="12")
+              .flex-item
+            au-item(span="12")
+              .flex-item
+
+            au-item(span="8")
+              .flex-item
+            au-item(span="8")
+              .flex-item
+            au-item(span="8")
+              .flex-item
+
+            au-item(span="6")
+              .flex-item
+            au-item(span="6")
+              .flex-item
+            au-item(span="6")
+              .flex-item
+            au-item(span="6")
+              .flex-item
+            au-item(span="5", offset="1")
+              .flex-item
+            au-item(span="3", offset="9")
+              .flex-item
+            au-item(span="2", offset="4")
+              .flex-item
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|AuFlex属性
+      au-table(:data="flexAttrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+    .docs-section
+      h2|AuItem属性
+      au-table(:data="itemAttrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+
+block script
+  style.
+    .au-flex {
+      margin: 10px 0;
+    }
+    .flex-item {
+      background-color: #eee;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 10px;
+      text-align: center;
+      margin: 5px 0;
+    }
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          flexAttrs: [
+            {
+              name: 'inline',
+              desc: '使用inline-flex',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'column',
+              desc: '使用flex-direction: column',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'wrap',
+              desc: '同flex-wrap',
+              type: 'String, Boolean',
+              default: 'false'
+            },
+            {
+              name: 'justify-content',
+              desc: '同justify-content',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'align-items',
+              desc: '同align-items',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'align-content',
+              desc: '同align-content',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'gutter',
+              desc: '列外间距(像素)',
+              type: 'Number',
+              default: '0'
+            }
+          ],
+          itemAttrs: [
+            {
+              name: 'flex',
+              desc: '同flex',
+              type: 'String, Number, Boolean',
+              default: 'false'
+            },
+            {
+              name: 'order',
+              desc: '同order',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'grow',
+              desc: '同flex-grow',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'shrink',
+              desc: '同flex-shrink',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'basis',
+              desc: '同flex-basis',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'align-self',
+              desc: '同align-self',
+              type: 'String',
+              default: '""'
+            },
+            {
+              name: 'span',
+              desc: '栅格占格数, 每行24格',
+              type: 'String, Number',
+              default: 'null'
+            },
+            {
+              name: 'offset',
+              desc: '栅格左侧偏移占格数',
+              type: 'String, Number',
+              default: 'null'
+            }
+          ],
+          column: 4,
+          list: [1, 2, 3, 4, 5, 6]
+        }
+      }
+    })

@@ -1,0 +1,8 @@
+.au-radio-group
+  div(v-if="options && options.length > 0")
+    au-radio(
+      v-for="item in options",
+      :value="item.value",
+      :label="item.label"
+    )
+  slot(v-else)

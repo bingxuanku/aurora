@@ -1,0 +1,18 @@
+transition(
+  name="alert-fade"
+)
+  .au-alert(
+    v-show="isShow",
+    :class="cls"
+  )
+    .au-alert-icon(v-if="icon")
+      au-icon(:icon="icon")
+    .au-alert-content
+      .au-alert-title(v-if="title")|{{ title }}
+      slot.au-alert-title(v-else, name="title")
+
+      .au-alert-desc(v-if="desc")|{{ desc }}
+      slot.au-alert-desc(v-else, name="desc")
+
+    .au-alert-close(v-if="closeable")
+      au-icon(icon="close", @click.native="onClose")

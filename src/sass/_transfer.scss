@@ -1,0 +1,76 @@
+.au-transfer{
+  .au-transfer-panel{
+    border: 1px solid $color-border;
+    box-sizing: border-box;
+    position: relative;
+
+    .au-transfer-panel__header{
+      height: 36px;
+      line-height: 36px;
+      background: $color-white-light;
+      padding-left: 20px;
+      border-bottom: 1px solid $color-border;
+      box-sizing: border-box;
+    }
+
+    .au-transfer-panel__body{
+      padding-bottom: 36px;
+
+      .au-transfer-panel__filter{
+        margin-top: 10px;
+        padding: 0 10px;
+      }
+
+      .au-transfer-panel__list{
+        margin: 0;
+        padding: 6px 0;
+        height: 246px;
+        overflow: auto;
+        box-sizing: border-box;
+
+        .au-transfer-panel__item{
+          // height: 32px;
+          // line-height: 32px;
+          padding: 6px;
+          padding-left: 20px;
+        }
+
+        .au-transfer-panel__empty{
+          height: 32px;
+          line-height: 32px;
+          padding: 6px 20px 0;
+          color: $color-silver-light;
+          margin: 0;
+          font-size: $fontsize-default;
+        }
+      }
+    }
+
+    .au-transfer-panel__footer{
+      height: 36px;
+      background: $color-white;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid $color-border;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      .au-checkbox-wrap{
+        padding-left: 20px;
+        line-height: 36px;
+        height: 36px;
+      }
+    }
+  }
+
+  .au-transfer__buttons{
+    width: 80px;
+    margin: 0 auto;
+
+    button{
+      margin-bottom: 5px;
+    }
+  }
+}

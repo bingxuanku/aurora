@@ -1,0 +1,73 @@
+extends ./_layout
+
+block title
+  |Upload
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuUpload
+      .docs-desc
+
+    .docs-section
+      h2|基础上传组件
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-upload(@change="onChange")
+        .docs-panel-row
+          au-upload(@change="onChange", button-size="small")
+        .docs-panel-row
+          au-upload(@change="onChange", button-size="mini")
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [
+            {
+              name: 'buttonText',
+              desc: '显示按钮的文字',
+              type: 'String',
+              default: '点击上传'
+            },
+            {
+              name: 'buttonSize',
+              desc: '显示按钮的大小 (可选值: large, default, small, mini)',
+              type: 'String',
+              default: 'default'
+            },
+            {
+              name: 'accept',
+              desc: '同input的accept',
+              type: 'String',
+              default: ''
+            }
+          ],
+          form: {
+            file: null
+          }
+        }
+      },
+      methods: {
+        onChange ($event) {
+          const file = $event.target.files[0]
+          if (file) {
+            console.log(file)
+          }
+        }
+      }
+    })

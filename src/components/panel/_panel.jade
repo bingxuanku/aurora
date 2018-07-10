@@ -1,0 +1,18 @@
+div.au-panel
+  .au-panel-heading(v-if="title")
+    .au-panel-heading-left
+      .au-panel-title
+        au-icon(:icon="icon", v-if="icon")
+        |{{ title }}
+
+    .au-panel-heading-right
+      slot(name="heading-right")
+      .au-panel-collapse-icon(v-if="collapse", @click="onCollapseChange")
+        au-icon(icon="plus", v-if="!model")
+        au-icon(icon="minus", v-if="model")
+
+  .au-panel-content(:style="contentStyle")
+    .au-panel-content-inner
+      slot
+      .au-panel-footer
+        slot(name="footer")

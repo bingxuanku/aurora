@@ -1,0 +1,29 @@
+.au-date-time-picker-range-panel
+  .au-date-time-picker-range-panel-inner
+    au-date-time-picker-panel(
+      v-model="leftValue",
+      ref="leftContent",
+      :range="tempValue",
+      leftRange,
+      :isShowBottomBar="false",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate",
+      fixed-temp-value,
+      :format="format"
+    )
+    au-date-time-picker-panel(
+      v-model="rightValue",
+      ref="rightContent",
+      :range="tempValue",
+      rightRange,
+      :isShowBottomBar="false",
+      :startDate="startDate",
+      :endDate="endDate",
+      :disabledDate="disabledDate",
+      fixed-temp-value,
+      :format="format"
+    )
+
+  .au-date-picker-bottom
+    .au-date-picker-bottom-btn(@click="closeHandler")|关闭

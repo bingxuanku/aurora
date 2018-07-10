@@ -1,0 +1,31 @@
+.au-pop-confirm-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.au-pop-confirm {
+
+}
+
+.au-pop-confirm-content {
+  font-size: $fontsize-small;
+  line-height: $fontsize-small * 1.5;
+  color: $color-black-light-extra;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  max-width: 350px;
+  min-width: 150px;
+
+  .au-icon {
+    margin-right: 10px;
+    font-size: $fontsize-large;
+  }
+}
+
+.au-pop-confirm-bottom {
+  padding: 0 15px 15px;
+  text-align: right;
+  cursor: default;
+}

@@ -1,0 +1,18 @@
+transition(name="au-modal-wrap")
+  .au-modal-wrapper(v-if="value", :style="style", @click="onClick")
+    .au-modal(v-if="value", :style="modalStyle")
+      .au-modal-heading
+        .au-modal-heading-left
+          .au-modal-label
+            au-icon(:icon="icon", v-if="icon")
+            |{{ title }}
+
+        .au-modal-heading-right(v-if="!noClose")
+          div.au-modal-close(@click="closeHandler")
+            au-icon(icon="close")
+
+      .au-modal-content
+        slot
+
+      .au-modal-footer
+        slot(name="footer")

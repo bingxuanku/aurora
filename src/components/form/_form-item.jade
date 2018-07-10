@@ -1,0 +1,8 @@
+.au-form-item(:class="cls")
+  .au-form-item-label(v-if="label", :style="labelStyle")
+    slot(name="label")|{{label}}
+  .au-form-item-content(:style="contentStyle")
+    .au-form-item-control
+      slot
+    .au-form-item-message
+      |{{ message }}

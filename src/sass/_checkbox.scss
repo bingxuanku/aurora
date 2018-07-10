@@ -1,0 +1,91 @@
+.au-checkbox-wrap {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.au-checkbox {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  font-size: $fontsize-default;
+  color: $color-black-light-extra;
+
+  &:hover {
+    .au-checkbox-mark {
+      border-color: $color-primary;
+    }
+  }
+
+  &.checked {
+    .au-checkbox-mark {
+      border-color: $color-primary;
+      background-color: $color-primary;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $color-gray;
+    .au-checkbox-mark {
+      background-color: $color-white-dark;
+      border-color: $color-gray-light-extra;
+    }
+
+    &.checked {
+      .au-checkbox-mark {
+        background-color: $color-gray-light-extra;
+      }
+    }
+  }
+}
+
+.au-checkbox-mark {
+  background-color: $color-white;
+  border: 1px solid $color-gray-light-extra;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  @include flex-center-center();
+  transition: border-color $transition-during;
+  color: $color-white;
+
+  .au-icon {
+    font-size: $fontsize-small;
+    transition: all 0.1s;
+  }
+}
+
+.au-checkbox-text {
+  margin-left: 4px;
+  flex: 1;
+}
+
+.au-checkbox-mark-enter {
+  transform: scale(0.1);
+}
+
+.au-checkbox-mark-enter-to {
+  transform: scale(1);
+  transition: all 0.15s;
+}
+
+.au-checkbox-mark-leave {
+  transform: scale(1);
+}
+
+.au-checkbox-mark-leave-to {
+  transform: scale(0.1);
+  transition: all 0.15s;
+}
+
+
+.au-checkbox-group {
+  .au-checkbox-wrap {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

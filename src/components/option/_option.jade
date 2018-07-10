@@ -1,0 +1,9 @@
+div.au-option(
+  @click="clickHandler",
+  :class="cls",
+  v-if="!isHide",
+  @mouseover="mouseoverHandler",
+  @mouseout="mouseoutHandler"
+)
+  slot|{{label}}
+  au-icon(icon="check")

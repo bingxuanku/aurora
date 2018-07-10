@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        title time
+        meta(charset="utf-8")
+        //- link(href="src/sass/main.css" rel="stylesheet")
+        link(href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet")
+        script(src="../lib/vue.dev.js")
+        script(src="../src/aurora.js")
+    body
+        div#app(v-cloak)
+            div(style="padding: 50px; width: 600px;")
+              h4(style="margin:10px 0") 只有一项
+              au-timeline()
+                au-timeline-item()| 123
+
+              h4(style="margin:10px 0") 多项
+              au-timeline()
+                au-timeline-item()| 123
+                au-timeline-item()
+                  p|Technical testing 1
+                  p|Technical testing 2
+                  p|Technical testing 3 2015-09-01
+                au-timeline-item(color="red")| 测试
+                au-timeline-item(pending)
+                  a(href="#")| See more
+              
+              h4(style="margin:10px 0") 单项pending
+              au-timeline()
+                au-timeline-item(pending)
+                  a(href="#") See more
+
+              h4(style="margin:10px 0") 自定义dot
+              au-timeline()
+                au-timeline-item(icon="search")| 自定义dot
+                au-timeline-item(pending)
+                  a(href="#") See more
+              
+              h4(style="margin:10px 0")| 完整例子
+              au-timeline()
+                au-timeline-item()| Create a services site 2015-09-01
+                au-timeline-item(icon="clock-o",color="red")| Solve initial network problems 2015-09-01
+                au-timeline-item(color="red")| Technical testing 2015-09-01
+                au-timeline-item(color="green")| Network problems being solved   2015-09-01
+                au-timeline-item(pending)
+                  a(href="#") see more
+              
+              h4(style="margin:10px 0")| 循环
+              au-timeline()
+                au-timeline-item(v-for="city in cities")| {{city}}
+        
+        script.
+            const cities = ['上海', '北京', '广州', '深圳', '南京', '西安', '成都'];
+            const pinyin = ['shanghai', 'beijing', 'guangzhou', 'shenzhen', 'nanjing', 'xian', 'chengdu'];
+
+            vm = new Vue({
+                el: "#app",
+                data: {
+                    cities: cities
+                }
+            })

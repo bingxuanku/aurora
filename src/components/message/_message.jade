@@ -1,0 +1,20 @@
+transition(name="message-fade")
+  .au-message(
+    :class="cls",
+    v-if="isShow",
+    @mouseover="onMouseover",
+    @mouseout="onMouseout"
+  )
+    .au-message-inner
+      .au-message-icon
+        au-icon(icon="check-circle-o", v-if="type === 'success'")
+        au-icon(icon="info-circle", v-if="type === 'info'")
+        au-icon(icon="exclamation-circle", v-if="type === 'warning'")
+        au-icon(icon="times-circle-o", v-if="type === 'danger' || type === 'error'")
+        au-icon(icon="circle-o-notch", v-if="type === 'loading'", autorotate)
+      .au-message-content
+        .au-message-title(v-if="title")|{{ title }}
+        .au-message-desc(v-if="message")|{{ message }}
+      .au-message-buttons(v-if="type != 'loading' || buttons.length > 0")
+        .au-message-button(v-for="button in buttons", @click="button.callback")|{{ button.title }}
+        .au-message-button(v-if="type != 'loading'", @click="disappear")|关闭

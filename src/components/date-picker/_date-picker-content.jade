@@ -1,0 +1,38 @@
+div
+  div.au-date-picker-title-bar
+    .au-date-picker-button(:class="{'au-date-picker-hidden': rightRange}", @click="prevYear")
+      au-icon(icon="angle-double-left")
+    .au-date-picker-button(:class="{'au-date-picker-hidden': rightRange}", @click="prevMonth")
+      au-icon(icon="angle-left")
+
+    .au-date-picker-text
+      span(:class="{'au-date-picker-text-button': true}", @click="showYearPanel")|{{ year }}年
+      |&nbsp;-&nbsp;
+      span(:class="{'au-date-picker-text-button': true}", @click="showMonthPanel")|{{ month }}月
+
+    .au-date-picker-button(:class="{'au-date-picker-hidden': leftRange}", @click="nextMonth")
+      au-icon(icon="angle-right")
+
+    .au-date-picker-button(:class="{'au-date-picker-hidden': leftRange}", @click="nextYear")
+      au-icon(icon="angle-double-right")
+
+  div.au-date-picker-content
+    .au-date-picker-table
+      .au-date-picker-table-heading
+        .au-date-picker-table-item|日
+        .au-date-picker-table-item|一
+        .au-date-picker-table-item|二
+        .au-date-picker-table-item|三
+        .au-date-picker-table-item|四
+        .au-date-picker-table-item|五
+        .au-date-picker-table-item|六
+      .au-date-picker-table-content
+        .au-date-picker-table-row(v-for="row in days")
+          .au-date-picker-table-item.au-date-picker-item(
+            v-for="day in row",
+            @click="clickItem(day)",
+            @mouseover="mouseoverItem(day)",
+            :class="{'au-text-grey': !day.isCurrentMonth, 'au-text-current': isActiveDay(day), 'au-date-picker-range-item': isRangeDay(day), 'au-text-today': day.isToday, 'au-disabled': day.isDisabled }"
+          )
+            |{{ day.date }}
+            .au-arrow(v-if="day.isToday")

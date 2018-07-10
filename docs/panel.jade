@@ -1,0 +1,72 @@
+extends ./_layout
+
+block title
+  |Panel
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuPanel
+      .docs-desc
+
+    .docs-section
+      h2|基础Panel
+      .docs-desc
+
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-panel(title="新页面", collapse, v-model="isCollapse")
+            div(slot="heading-right")
+              |abc
+            div|哈哈
+            div(slot="footer", style="text-align:right")
+              au-button(type="default", size="small")|取消
+              au-button(type="primary", size="small")|提交
+
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|属性
+      au-table#table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          isCollapse: true,
+          attrs: [
+            {
+              name: 'title',
+              desc: '显示的title',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'icon',
+              desc: '标题左侧的icon',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'collapse',
+              desc: '是否折叠',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'v-model',
+              desc: '控制是否折叠的值',
+              type: 'Boolean',
+              default: 'true'
+            },
+          ]
+        }
+      }
+    })

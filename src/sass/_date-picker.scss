@@ -1,0 +1,294 @@
+.au-date-picker {
+  user-select: none;
+  .au-input, .au-input-control {
+    cursor: pointer;
+  }
+}
+
+.au-date-picker-panel,
+.au-year-picker-panel,
+.au-month-picker-panel {
+  width: 253px;
+  background-color: #fff;
+  user-select: none;
+  overflow: hidden;
+}
+
+.au-date-picker-title-bar {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 10px;
+  font-size: $fontsize-default;
+  border-bottom: 1px solid $color-white-dark;
+}
+
+.au-date-picker-button {
+  width: 20px;
+  height: 20px;
+  @include flex-center-center();
+  cursor: pointer;
+  margin: 0 4px;
+  color: $color-gray-light-extra;
+
+  .au-icon {
+    font-size: $fontsize-large;
+  }
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.au-date-picker-text {
+  flex: 1;
+  @include flex-center-center();
+}
+
+.au-date-picker-content {
+  padding: 10px;
+}
+
+.au-date-picker-item {
+  position: relative;
+  cursor: pointer;
+  color: $color-silver;
+  text-align: center;
+  font-size: $fontsize-small;
+
+  &.au-text-today {
+    color: $color-primary;
+
+    .au-arrow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 4px solid transparent;
+      border-top: 4px solid $color-primary;
+      border-right: 4px solid $color-primary;
+    }
+  }
+
+  &:hover {
+    background-color: $color-white-dark;
+    &.au-text-grey {
+      background-color: transparent;
+    }
+    &.au-disabled {
+      background-color: $color-white-dark;
+      color: $color-silver-light-extra;
+    }
+  }
+
+  &.au-text-grey {
+    color: $color-gray;
+  }
+
+  &.au-disabled {
+    cursor: not-allowed;
+    background-color: $color-white-dark;
+    color: $color-silver-light-extra;
+  }
+
+  &.au-text-current {
+    background-color: $color-primary !important;
+    color: #fff !important;
+  }
+}
+
+// Table
+// --------------------
+
+.au-date-picker-table {}
+
+.au-date-picker-table-heading,
+.au-date-picker-table-row {
+  display: flex;
+}
+
+.au-date-picker-table-heading .au-date-picker-table-item {
+  color: $color-black;
+  font-weight: bold;
+  text-align: center;
+  font-size: $fontsize-small;
+}
+
+.au-date-picker-table-content .au-date-picker-table-item {
+
+}
+
+.au-date-picker-table-item {
+  flex: 1;
+  height: 32px;
+  line-height: 32px;
+}
+
+.au-date-picker-text-button {
+  cursor: pointer;
+  white-space: nowrap;
+  color: $color-silver;
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+// Year
+.au-year-picker-panel {
+  background-color: #fff;
+}
+
+.au-year-picker-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.au-year-picker-item {
+  width: 25%;
+  height: 32px;
+  line-height: 32px;
+  margin: 20px 0;
+}
+
+// Month
+.au-month-picker-panel {
+  background-color: #fff;
+  width: 253px;
+}
+
+.au-month-picker-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.au-date-picker-range-panel {
+  background-color: #fff;
+  user-select: none;
+  display: flex;
+  width: 253px * 2;
+
+  .au-date-picker-panel:first-child {
+    border-right: 1px solid $color-white-dark;
+  }
+  .au-date-picker-content {
+    flex: 1;
+  }
+}
+
+.au-date-picker-hidden {
+  visibility: hidden !important;
+}
+
+.au-date-picker-range-item {
+  background-color: #e3eafc;
+}
+
+.au-date-picker-bottom {
+  padding: 0 4px;
+  height: 35px;
+  line-height: 35px;
+  font-size: $fontsize-small;
+  text-align: right;
+  border-top: 1px solid $color-white-dark;
+}
+
+.au-date-picker-bottom-btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 10px;
+
+  &.primary {
+    color: $color-primary;
+  }
+
+}
+
+
+// time
+// -------------------------
+.au-time-picker-panel {
+  width: 146px;
+  background-color: $color-white;
+  overflow: hidden;
+}
+
+.au-time-picker-panel-items {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  height: $time-picker-item-height * 5;
+}
+
+.au-time-picker-selector {
+  flex: 1;
+  overflow: hidden;
+  border-right: 1px solid $color-white-dark;
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.au-time-picker-selector-inner {
+  padding-bottom: $time-picker-item-height * 4;
+}
+
+.au-time-picker-item {
+  font-size: $fontsize-default;
+  height: $time-picker-item-height;
+  line-height: $time-picker-item-height;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-white-dark;
+  }
+
+  &.au-disabled {
+    cursor: not-allowed;
+    background-color: $color-white-dark;
+    color: $color-silver-light-extra;
+  }
+
+  &.active {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}
+
+
+// date time picker
+// -------------------------
+.au-date-time-picker-panel {
+  user-select: none;
+  background-color: $color-white;
+  &, .au-date-picker-panel {
+    width: 324px;
+  }
+
+  .au-date-picker-content {
+    padding: 10px 22px;
+  }
+}
+.au-date-time-picker-input-wrapper {
+  display: flex;
+  padding: 10px;
+  .au-input:first-child {
+    margin-right: 8px;
+  }
+}
+
+.au-date-time-picker-range-panel {
+  background-color: $color-white;
+  width: 648px;
+  overflow: hidden;
+  .au-date-picker-panel, .au-year-picker-panel, .au-month-picker-panel {
+    background-color: transparent;
+  }
+
+  .au-date-time-picker-panel:first-child {
+    border-right: 1px solid $color-white-dark;
+  }
+}
+
+.au-date-time-picker-range-panel-inner {
+  display: flex;
+}

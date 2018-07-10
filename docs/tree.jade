@@ -1,0 +1,610 @@
+extends ./_layout
+
+block title
+  |Tree
+
+block content
+  au-panel
+    .docs-heading
+      h1|AuTree
+      .docs-desc
+
+    .docs-section
+      h2|Tree
+      .docs-desc
+
+      template.html(scoped="scoped")
+        au-tree(:data="data", :loader="loader", checkable, @check="onCheck", :expands="expands1", :default-checkeds="defaultCheckeds")
+        div|------
+        au-tree(:data="data", default-expand-all, :click-row-expand="false")
+          template(scope="scope")
+            au-flex
+              au-item(flex="1")|{{ scope.data.label }}
+              au-item
+                au-button(type="primary", size="mini")|编辑
+                au-button(type="danger", size="mini")|删除
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              const data = [
+                {
+                  label: '加载更多',
+                  children: null
+                },
+                {
+                  label: '第一级',
+                  children: [
+                    {
+                      label: '第二级'
+                    },
+                    {
+                      label: '第三级',
+                      children: [
+                        {
+                          label: '第二级',
+                          children: []
+                        },
+                        {
+                          label: '第三级',
+                          children: []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+              return {
+                defaultCheckeds: [data[1].children[1].children[0]],
+                expands1: [data[1]],
+                count: 0,
+                data
+              }
+            },
+            mounted () {
+              return
+              setTimeout(() => {
+                this.data.push({
+                  label: '第二级'
+                })
+
+                this.data[0].children.push({
+                  label: '第三级',
+                  children: [
+                    {
+                      label: 'abc def'
+                    }
+                  ]
+                })
+              }, 1000)
+            },
+            methods: {
+              onCheck (checkeds) {
+                console.log('--------------------------------------------------------------------------------')
+                console.log(checkeds)
+              },
+              loader (data, callback) {
+                if ((this.count++) > 1) {
+                  setTimeout(callback, 400)
+                  return
+                }
+                setTimeout(() => {
+                  data.children = [{
+                    label: `加载${this.count}-1`,
+                    children: null,
+                    disableCheckbox: true
+                  }, {
+                    label: `加载${this.count}-2`,
+                    children: null
+                  }]
+                  callback()
+                }, 200)
+              }
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+        .docs-code
+          docs-code.js
+
+    .docs-section
+      h2|展开树
+      .docs-desc
+
+      template.html(scoped="scoped")
+        au-tree(:data="areas", :expands="expands")
+
+      template.js(scoped="scoped")
+        script.
+          {
+            data () {
+              return {
+                expands: [],
+                areas: [
+                  {
+                    label: '北京',
+                    children: [
+                      {
+                        label: '朝阳区'
+                      },
+                      {
+                        label: '海淀区'
+                      },
+                      {
+                        label: '通州区'
+                      },
+                      {
+                        label: '房山区'
+                      },
+                      {
+                        label: '丰台区'
+                      },
+                      {
+                        label: '昌平区'
+                      },
+                      {
+                        label: '大兴区'
+                      },
+                      {
+                        label: '顺义区'
+                      },
+                      {
+                        label: '西城区'
+                      },
+                      {
+                        label: '延庆县'
+                      },
+                      {
+                        label: '石景山区'
+                      },
+                      {
+                        label: '宣武区'
+                      },
+                      {
+                        label: '怀柔区'
+                      },
+                      {
+                        label: '崇文区'
+                      },
+                      {
+                        label: '密云县'
+                      },
+                      {
+                        label: '东城区'
+                      },
+                      {
+                        label: '平谷区'
+                      },
+                      {
+                        label: '门头沟区'
+                      }
+                    ]
+                  },
+                  {
+                    label: '广东省',
+                    children: [
+                      {
+                        label: '东莞市',
+                        children: [
+                          {
+                            label: "中堂镇"
+                          },
+                          {
+                            label: "东坑镇"
+                          },
+                          {
+                            label: "道滘镇"
+                          },
+                          {
+                            label: "沙田镇"
+                          },
+                          {
+                            label: "高埗镇"
+                          },
+                          {
+                            label: "石龙镇"
+                          },
+                          {
+                            label: "石排镇"
+                          },
+                          {
+                            label: "企石镇"
+                          },
+                          {
+                            label: "石碣镇"
+                          },
+                          {
+                            label: "洪梅镇"
+                          },
+                          {
+                            label: "麻涌镇"
+                          },
+                          {
+                            label: "桥头镇"
+                          },
+                          {
+                            label: "望牛墩镇"
+                          },
+                          {
+                            label: "茶山镇"
+                          },
+                          {
+                            label: "谢岗镇"
+                          },
+                          {
+                            label: "松山湖"
+                          },
+                          {
+                            label: "莞城区"
+                          },
+                          {
+                            label: "南城区"
+                          },
+                          {
+                            label: "长安镇"
+                          },
+                          {
+                            label: "寮步镇"
+                          },
+                          {
+                            label: "大岭山镇"
+                          },
+                          {
+                            label: "常平镇"
+                          },
+                          {
+                            label: "厚街镇"
+                          },
+                          {
+                            label: "万江区"
+                          },
+                          {
+                            label: "樟木头镇"
+                          },
+                          {
+                            label: "大朗镇"
+                          },
+                          {
+                            label: "塘厦镇"
+                          },
+                          {
+                            label: "凤岗镇"
+                          },
+                          {
+                            label: "清溪镇"
+                          },
+                          {
+                            label: "横沥镇"
+                          },
+                          {
+                            label: "东城区"
+                          },
+                          {
+                            label: "黄江镇"
+                          },
+                          {
+                            label: "虎门镇"
+                          }
+                        ]
+                      },
+                      {
+                        label: '广州市',
+                        children: [
+                          {
+                            label: "天河区"
+                          },
+                          {
+                            label: "海珠区"
+                          },
+                          {
+                            label: "荔湾区"
+                          },
+                          {
+                            label: "越秀区"
+                          },
+                          {
+                            label: "番禺区"
+                          },
+                          {
+                            label: "花都区"
+                          },
+                          {
+                            label: "萝岗区"
+                          },
+                          {
+                            label: "白云区"
+                          },
+                          {
+                            label: "南沙区"
+                          },
+                          {
+                            label: "黄埔区"
+                          },
+                          {
+                            label: "增城区"
+                          },
+                          {
+                            label: "从化区"
+                          },
+                          {
+                            label: "广州大学城"
+                          }
+                        ]
+                      },
+                      {
+                        label: '中山市',
+                        children: [
+                          {
+                            label: "南朗镇"
+                          },
+                          {
+                            label: "小榄镇"
+                          },
+                          {
+                            label: "古镇"
+                          },
+                          {
+                            label: "坦洲镇"
+                          },
+                          {
+                            label: "黄圃镇"
+                          },
+                          {
+                            label: "三乡镇"
+                          },
+                          {
+                            label: "东凤镇"
+                          },
+                          {
+                            label: "横栏镇"
+                          },
+                          {
+                            label: "三角镇"
+                          },
+                          {
+                            label: "南头镇"
+                          },
+                          {
+                            label: "沙溪镇"
+                          },
+                          {
+                            label: "五桂山镇"
+                          },
+                          {
+                            label: "阜沙镇"
+                          },
+                          {
+                            label: "东升镇"
+                          },
+                          {
+                            label: "板芙镇"
+                          },
+                          {
+                            label: "神湾镇"
+                          },
+                          {
+                            label: "港口镇"
+                          },
+                          {
+                            label: "大涌镇"
+                          },
+                          {
+                            label: "火炬开发区"
+                          },
+                          {
+                            label: "民众镇"
+                          },
+                          {
+                            label: "沙朗镇"
+                          },
+                          {
+                            label: "城区"
+                          }
+                        ]
+                      },
+                      {
+                        label: '深圳市',
+                        children: [
+                          {
+                            label: "南山区"
+                          },
+                          {
+                            label: "罗湖区"
+                          },
+                          {
+                            label: "福田区"
+                          },
+                          {
+                            label: "宝安区"
+                          },
+                          {
+                            label: "光明新区"
+                          },
+                          {
+                            label: "坪山新区"
+                          },
+                          {
+                            label: "大鹏新区"
+                          },
+                          {
+                            label: "龙岗区"
+                          },
+                          {
+                            label: "盐田区"
+                          },
+                          {
+                            label: "龙华新区"
+                          }
+                        ]
+                      },
+                      {
+                        label: '惠州市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '江门市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '珠海市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '汕头市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '佛山市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '湛江市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '河源市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '肇庆市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '清远市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '潮州市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '韶关市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '揭阳市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '阳江市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '梅州市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '云浮市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '茂名市',
+                        children: [
+                        ]
+                      },
+                      {
+                        label: '汕尾市',
+                        children: [
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            mounted () {
+              setTimeout(() => {
+                this.expands = [this.areas[1].children[1].children[8]]
+                console.log(this.expands)
+              }, 1000)
+            }
+          }
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+        .docs-code
+          docs-code.js
+
+    .docs-section
+      h2|属性
+      au-table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+    .docs-section
+      h2|事件
+      au-table#table(:data="events")
+        au-table-column(v-for="column in eventColumns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [
+            {
+              name: 'data',
+              desc: '数据内容(格式为[{label: "", children: []}], label是显示的文字, children是子结点数组)',
+              type: 'Array',
+              default: '[]'
+            },
+            {
+              name: 'default-expand-all',
+              desc: '是否默认展开全部节点',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'loader',
+              desc: '异部加载子节点的函数, 如果children为null时, 展开节点会调用loader, 格式为loader(data, callback)',
+              type: 'Function',
+              default: 'null'
+            },
+            {
+              name: 'click-row-expand',
+              desc: '是否点击整行展开折叠',
+              type: 'Boolean',
+              default: 'true'
+            },
+            {
+              name: 'checkable',
+              desc: '是否使用单选框',
+              type: 'Boolean',
+              default: 'false'
+            },
+            {
+              name: 'expands',
+              desc: '表示展开的元素',
+              type: 'Array',
+              default: '[]'
+            }
+          ],
+          events: [
+            {
+              name: 'check',
+              desc: 'checkbox有修改',
+              args: '(checkeds: Array)'
+            }
+          ]
+        }
+      }
+    })

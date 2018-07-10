@@ -1,0 +1,103 @@
+extends ./_layout
+
+block title
+  |Tooltip
+
+block content
+  au-panel
+    .docs-heading
+      h1|Tooltip
+      .docs-desc
+
+    .docs-section
+      h2|Tooltip
+      .docs-desc
+        p|Tooltip的用法
+      template.html(scoped="scoped")
+        .docs-panel-row
+          au-flex(wrap="wrap")
+            au-item(offset="4", span="16")
+              au-flex(gutter="20")
+                au-item(style="text-align: center", span="8", offset="8")
+                  au-tooltip(position="topLeft", message="确定要提交吗?", trigger="focus")
+                    au-button|提交
+                  au-tooltip(position="top", message="确定要提交吗?")
+                    au-button|提交
+                  au-tooltip(position="topRight", message="确定要提交吗?")
+                    au-button|提交
+              au-flex(gutter="20")
+                au-item(style="text-align: right", span="8")
+                  au-tooltip(position="leftTop", message="确定要提交吗?")
+                    au-button|提交
+                  br
+                  au-tooltip(position="left", message="确定要提交吗?")
+                    au-button|提交
+                  br
+                  au-tooltip(position="leftBottom", message="确定要提交吗?")
+                    au-button|提交
+                au-item(style="text-align: left", span="8", offset="8")
+                  au-tooltip(position="rightTop", message="确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗确定要提交吗?")
+                    au-button|提交
+                  br
+                  au-tooltip(position="right", message="确定要提交吗?")
+                    au-button|提交
+                  br
+                  au-tooltip(position="rightBottom", message="确定要提交吗?")
+                    au-button|提交
+              au-flex(gutter="20")
+                au-item(style="text-align: center", span="8", offset="8")
+                  au-tooltip(position="bottomLeft", message="确定要提交吗?")
+                    au-button|提交
+                  au-tooltip(position="bottom", message="确定要提交吗?")
+                    au-button|提交
+                  au-tooltip(position="bottomRight", message="确定要提交吗?")
+                    au-button|提交
+
+      .docs-panel
+        .docs-panel-content
+        .docs-code
+          docs-code.html
+
+    .docs-section
+      h2|属性
+      au-table#table(:data="attrs")
+        au-table-column(v-for="column in columns", :label="column.label", :attr-name="column.attrName")
+
+block script
+  script.
+    new Vue({
+      el: '#app',
+      mixins,
+      data () {
+        return {
+          attrs: [
+            {
+              name: 'message',
+              desc: '显示的内容',
+              type: 'String',
+              default: ''
+            },
+            {
+              name: 'position',
+              desc: '显示的位置(可选值: top, left, right, bottom, topLeft, topRight, leftTop, leftBottom, bottomLeft, bottomRight, rightTop, rightBottom)',
+              type: 'String',
+              default: 'top'
+            },
+            {
+              name: 'trigger',
+              desc: '触发的方式(可选值: click, hover, focus)',
+              type: 'String',
+              default: 'hover'
+            }
+          ]
+        }
+      },
+      methods: {
+        confirmHandler () {
+          console.log('confirm')
+        },
+        cancelHandler () {
+          console.log('cancel')
+        }
+      }
+    })

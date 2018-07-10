@@ -1,0 +1,232 @@
+
+// FontSize
+// -------------------------
+$fontsize-small:            12px;
+$fontsize-default:          14px;
+$fontsize-medium:           16px;
+$fontsize-large:            18px;
+$fontsize-large-extra:      20px;
+
+// Color
+// -------------------------
+$color-primary:             #4777E6;
+$color-info:                #6089ec;
+$color-success:             #00D397;
+$color-warning:             #FFCC01;
+$color-danger:              #FF4E4C;
+
+$color-black:               #000000;
+$color-black-light:         #222222;
+$color-black-light-extra:   #333333;
+$color-silver:              #666666;
+$color-silver-light:        #888888;
+$color-silver-light-extra:  #AAAAAA;
+$color-gray:                #BBBBBB;
+$color-gray-light:          #CCCCCC;
+$color-gray-light-extra:    #DDDDDD;
+$color-white-dark:          #EEEEEE;
+$color-white-light:         #F2F2F2;
+$color-white:               #FFFFFF;
+
+
+// Border
+// -------------------------
+$color-border:              $color-gray-light-extra;
+$color-border-hover:        $color-gray;
+
+
+// Radius
+// -------------------------
+$border-radius:             0px;
+
+// Size
+// -------------------------
+
+$size-large-padding-y:      10px;
+$size-large-padding-x:      20px;
+$size-large-height:         40px;
+$size-large-fontsize:       $fontsize-large;
+
+$size-default-padding-y:    10px;
+$size-default-padding-x:    16px;
+$size-default-height:       36px;
+$size-default-fontsize:     $fontsize-default;
+
+$size-small-padding-y:      8px;
+$size-small-padding-x:      10px;
+$size-small-height:         28px;
+$size-small-fontsize:       $fontsize-small;
+
+$size-mini-padding-y:      5px;
+$size-mini-padding-x:      5px;
+$size-mini-height:         22px;
+$size-mini-fontsize:       $fontsize-small;
+
+
+// Button
+// -------------------------
+$button-border-color:       $color-gray-light;
+$button-background-color:   $color-primary;
+$button-color:              #fff;
+$button-border-radius:      $border-radius;
+
+$button-fontsize-large:     $fontsize-large;
+$button-height-large:       40px;
+$button-padding-x-large:    20px;
+$button-padding-y-large:    10px;
+
+$button-fontsize-default:   $fontsize-default;
+$button-height-default:     36px;
+$button-padding-x-default:  16px;
+$button-padding-y-default:  10px;
+
+$button-fontsize-small:     $fontsize-small;
+$button-height-small:       28px;
+$button-padding-x-small:    10px;
+$button-padding-y-small:    8px;
+
+$button-fontsize-mini:      $fontsize-small;
+$button-height-mini:        22px;
+$button-padding-x-mini:     5px;
+$button-padding-y-mini:     5px;
+
+// Icon
+// -------------------------
+$icon-fontsize-small:       $fontsize-small;
+$icon-fontsize-default:     $fontsize-default;
+$icon-fontsize-large:       $fontsize-large;
+
+
+// Input
+// -------------------------
+$input-border-radius:       $border-radius;
+$input-height:              40px;
+$input-padding-x:           10px;
+$input-padding-y:           5px;
+
+$input-large-padding-y:     10px;
+$input-large-padding-x:     10px;
+$input-large-height:        $size-large-height;
+$input-large-fontsize:      $size-large-fontsize;
+
+$input-default-padding-y:   10px;
+$input-default-padding-x:   10px;
+$input-default-height:      $size-default-height;
+$input-default-fontsize:    $size-default-fontsize;
+
+$input-small-padding-y:     5px;
+$input-small-padding-x:     4px;
+$input-small-height:        $size-small-height;
+$input-small-fontsize:      $size-small-fontsize;
+
+$input-mini-padding-y:     2px;
+$input-mini-padding-x:     2px;
+$input-mini-height:        $size-mini-height;
+$input-mini-fontsize:      $size-mini-fontsize;
+
+
+// Select
+// -------------------------
+$select-large-padding-y:   0px;
+$select-large-padding-x:   10px;
+$select-large-height:      $size-large-height;
+$select-large-fontsize:    $size-large-fontsize;
+
+$select-default-padding-y: 0px;
+$select-default-padding-x: 10px;
+$select-default-height:    $size-default-height;
+$select-default-fontsize:  $size-default-fontsize;
+
+$select-small-padding-y:   0px;
+$select-small-padding-x:   $size-small-padding-x;
+$select-small-height:      $size-small-height;
+$select-small-fontsize:    $size-small-fontsize;
+
+$select-mini-padding-y:    0px;
+$select-mini-padding-x:    $size-mini-padding-x;
+$select-mini-height:       $size-mini-height;
+$select-mini-fontsize:     $size-mini-fontsize;
+
+
+// Transition
+// -------------------------
+$transition-during:         0.25s;
+
+// z-index
+// -------------------------
+$zindex-popup:              5000;
+$zindex-layout:             6000;
+$zindex-modal:              7000; // 7000~9999 for modal
+$zindex-message:            10000;
+
+// Datetime
+// -------------------------
+$time-picker-item-height:   36px;
+
+// Popup
+// -------------------------
+$popup-arrow-margin:        10px;
+$popup-arrow-width:         10px;
+$popup-arrow-offset:        -4px;
+$popup-arrow-rotate:        rotate(45deg);
+$popup-offset:              10px;
+$popup-shadow:              0 1px 5px rgba($color-black-light, 0.2);
+
+// Message
+// -------------------------
+$message-width:             280px;
+$message-height:            74px;
+$message-shadow:            0 1px 5px rgba($color-black-light, 0.2);
+$message-transition-during: 0.5s;
+$message-button-width:      56px;
+
+
+// Tabs
+// -------------------------
+$tabs-badge-back-color:     #FA0000;
+$tabs-badge-width:          16px;
+$tabs-badge-fontsize:       $fontsize-small;
+$tabs-badge-padding:        5px;
+
+
+// Steps
+// -------------------------
+$steps-line-color:          $color-white-dark;
+$steps-icon-color:          $color-gray-light;
+$steps-icon-text-color:     $color-silver-light;
+$steps-color:               $color-silver-light;
+$steps-active-color:        $color-primary;
+$steps-current-color:       $color-silver;
+$steps-current-text-color:  $color-black-light;
+$steps-dot-width:           6px;
+$steps-dot-active-width:    $steps-dot-width;
+$steps-dot-current-width:   8px;
+
+// Modal
+// -------------------------
+$modal-drag-shadow:         0 2px 20px rgba($color-black-light, 0.5);
+
+// Tree
+// -------------------------
+$tree-expand-width:         20px;
+$tree-item-offset:          20px;
+$tree-item-height:          32px;
+$tree-item-fontsize:        $fontsize-default;
+$tree-item-expand-fontsize: $fontsize-large;
+
+// Tag
+// -------------------------
+$tag-colors: (
+  "red":                   #ED5565,
+  "orange":                #E9573F,
+  "yellow":                #F6BB42,
+  "green":                 #8CC152,
+  "cyan":                  #37BC9B,
+  "sky":                   #3BAFDA,
+  "blue":                  #4A89DC,
+  "purple":                #967ADC,
+  "pink":                  #D770AD,
+  "light":                 #E6E9ED,
+  "gray":                  #AAB2BD,
+  "dark":                  #434A54
+)

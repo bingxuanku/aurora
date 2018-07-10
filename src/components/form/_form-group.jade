@@ -1,0 +1,27 @@
+au-flex.au-form-group(
+  :class="cls",
+  :gutter="isLabelTop ? 0 : 20",
+  :column="isLabelTop",
+  :align-items="isLabelTop ? 'stretch' : 'flex-start'",
+  v-if="!inline"
+)
+  au-item(
+    :span="isLabelTop || labelWidth ? null : 4",
+    :style="labelStyle",
+    v-if="label"
+  )
+    .au-form-group-label
+      |{{ label }}
+  au-item(flex="1", :offset="label || isLabelTop ? 0 : 4")
+    .au-form-group-control
+      slot
+
+.au-form-group(
+  v-else,
+  :class="cls"
+)
+  .au-form-group-label(v-if="label || isLabelTop")
+    |{{ label }}
+
+  .au-form-group-control
+    slot

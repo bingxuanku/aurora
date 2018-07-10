@@ -1,0 +1,8 @@
+div.au-tabs
+  .au-tabs-heading
+    .au-tab-item(v-for="panel in panels", :class="{ active: model == panel.value, disabled: panel.disabled }", @click="clickTab(panel)")
+      |{{ panel.tab }}
+      .au-tab-badge(v-if="panel.badge")|{{ panel.badge }}
+  .au-tabs-heading-active-line(ref="activeLine")
+  .au-tabs-content
+    slot

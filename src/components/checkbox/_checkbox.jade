@@ -1,0 +1,8 @@
+.au-checkbox-wrap
+  .au-checkbox(:class="{ checked: (checked || indeterminate), disabled: disabled }", @click="clickHandler")
+    .au-checkbox-mark
+      transition(name="au-checkbox-mark")
+        au-icon(icon="check", v-if="checked")
+        au-icon(icon="minus", v-if="!checked && indeterminate")
+    .au-checkbox-text(v-if="label")
+      |{{label}}

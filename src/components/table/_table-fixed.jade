@@ -1,0 +1,5 @@
+.au-table-fixed(:class="cls", ref="fixed")
+  .au-table-fixed-inner(ref="fixedInner")
+    au-table-head(:model="model", :fixed-type="fixedType", v-if="model.showHeader")
+    .au-table-fixed-body(ref="bodyWrapper")
+      au-table-body(:model="model", :fixed-type="fixedType", ref="body")

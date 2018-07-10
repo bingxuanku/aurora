@@ -1,0 +1,112 @@
+.au-input {
+  width: 100%;
+  position: relative;
+}
+
+.au-input-control {
+  width: 100%;
+  border: 1px solid $color-border;
+  border-radius: $input-border-radius;
+  transition-property: border-color;
+  transition-duration: 0.3s;
+  color: #333;
+
+  &:hover {
+    border-color: $color-border-hover;
+  }
+
+  &:focus, &.active {
+    border-color: $color-primary;
+  }
+
+  &::placeholder {
+    opacity: 1;
+    color: $color-silver-light-extra;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $color-gray;
+    background-color: $color-white-dark;
+    border-color: $color-border;
+  }
+
+  &[type="text"], &[type="password"] {
+    height: $input-height;
+  }
+}
+
+textarea.au-input-control {
+  resize: vertical;
+  vertical-align: top;
+}
+.au-input-default {
+  .au-input-control {
+    padding: $input-default-padding-y $input-default-padding-x;
+    font-size: $input-default-fontsize;
+    &[type="text"], &[type="password"] {
+      height: $input-default-height;
+      line-height: ($input-default-height - $input-default-padding-y * 2);
+    }
+  }
+}
+
+.au-input-large {
+  .au-input-control {
+    padding: $input-large-padding-y $input-large-padding-x;
+    font-size: $input-large-fontsize;
+    &[type="text"], &[type="password"] {
+      height: $input-large-height;
+      line-height: ($input-large-height - $input-large-padding-y * 2);
+    }
+  }
+}
+
+.au-input-small {
+  .au-input-control {
+    padding: $input-small-padding-y $input-small-padding-x;
+    font-size: $input-small-fontsize;
+    &[type="text"], &[type="password"] {
+      height: $input-small-height;
+      line-height: ($input-small-height - $input-small-padding-y * 2);
+    }
+  }
+}
+
+.au-input-mini {
+  .au-input-control {
+    padding: $input-mini-padding-y $input-mini-padding-x;
+    font-size: $input-mini-fontsize;
+    &[type="text"], &[type="password"] {
+      height: $input-mini-height;
+      line-height: ($input-mini-height - $input-mini-padding-y * 2);
+    }
+  }
+}
+
+
+.au-input-with-icon .au-input-control {
+  padding-right: $input-height;
+}
+
+.au-input-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $input-height;
+  height: 100%;
+  @include flex-center-center();
+  font-size: $fontsize-default;
+  color: $color-border;
+  cursor: pointer;
+  transition: $transition-during;
+}
+.au-input:hover .au-input-icon {
+  color: $color-silver-light;
+}
+
+.au-input-with-icon-handler {
+  .au-input-icon:hover {
+    color: $color-primary;
+  }
+}

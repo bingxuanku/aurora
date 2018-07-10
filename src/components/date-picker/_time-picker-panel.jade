@@ -1,0 +1,7 @@
+.au-time-picker-panel
+  .au-time-picker-panel-items
+    TimePickerItem(ref="hour", :range="hours", v-model="hour", v-if="showing.hour")
+    TimePickerItem(ref="minute", :range="minutes", v-model="minute", v-if="showing.minute")
+    TimePickerItem(ref="second", :range="seconds", v-model="second", v-if="showing.second")
+  .au-date-picker-bottom
+    .au-date-picker-bottom-btn(@click="closeHandler")|关闭
